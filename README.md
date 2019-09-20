@@ -13,11 +13,11 @@ Relatório Intermediário
 
     Arquitetura do processador;
 
+    Diagrama de conexão do processador com os periféricos;
+
     Fluxo de dados para o processador, com uma explicação resumida do seu funcionamento;
 
     Listagem dos pontos de controle e sua utilização;
-
-    Diagrama de conexão do processador com os periféricos;
 
     Mapa de memória. (Nossa arquitetura não possui RAM); 
 
@@ -156,20 +156,21 @@ O código assembly acimea foi gerado a partir do relogio.c, dessa forma foi poss
 
 Portanto vamos utilizar 6 registradores
 
-``Total de instruções e sua sintaxe;``
+`` 2) Total de instruções e sua sintaxe;``
 
     | Instruções             |Binário |
-    | MOV | (move)           | 000    |
-    | JMP | (jump)           | 001    |  
-    | CMP | (compare)        | 010    |
-    | JG  | (if jump a>b)    | 011    | 
-    | ADD | (add a+b )       | 100    |
-    | JNE | (jump  if< 0)    | 101    |
-    | JE  | (jump equal a=b) | 110    |
-    | SUB | (sub a-b)        | 111    |
+    | MOV   | (move)           | 0000    |
+    | JMP   | (jump)           | 0001    |  
+    | CMP   |  (compare)       | 0010    |
+    | JG    | (if jump a>b)    | 0011    | 
+    | ADD   | (add a+b )       | 0100    |
+    | JNE   | (jump  if< 0)    | 0101    |
+    | JE    | (jump equal a=b) | 0110    |
+    | SUB   | (sub a-b)        | 0111    |
+    | MOVLCD| (move LCD)       | 1000    | 
 
 
-* O total de instruções é 8. 
+* O total de instruções é 9. 
 
 * Elas possuem o seguinte formato :
 
@@ -184,18 +185,54 @@ Portanto vamos utilizar 6 registradores
 
     * Exemplo:
      ```asm
+
+      IMEDIATO:
+
       mov $0, %ecx
+
+      LCD:
+
+      movlcd %edi, $1; 
+      
+    (Coloca o conteúdo do edi na primeiro segmento do display)
      ```
-* Endereçamento 
 
 
 
 
-```    Arquitetura do processador; ```
+```   3) Arquitetura do processador; ```
 
 * Para este projeto estaremos utilizando uma arquitetura Registrador-Memória.
 
 O processo de decisão da arquitetura do relógio foi baseado na conversão do pseudocódigo em assembly. No momento em que realizamos a conversão, percebemos que todas as instruções necessárias para o funcionamento integral do relógio poderiam ser executadas através de operacoes entre um registrador e um imediato. Nesse sentido, usamos a instrucao mov, que é responsável por buscar o conteudo de um registrador específico do banco de registradores e realizar alguma operacao deste com um imediato.
 
 
-     
+
+``` 4) Diagrama de conexão do processador com os periféricos;```
+
+
+![](diagramaRelogio.jpg)
+
+
+``` 5)Fluxo de dados para o processador, com uma explicação resumida do seu funcionamento;```
+
+A imagem a baixo mostra um diagrama para o nosso relógio com os periféricos
+
+
+Explicação do fluxo de dados:
+
+    A partir de uma determinada instrução, esperamos a leitura do registrador da base de tempo indicar que um segundo já passou para executar o loop de instruções desencadeado pelo add de um no registrador do primeiro dígito dos segundos. 
+
+    Considerando essa mesma instrução add, por exemplo, a memoria de instruções transforma o conteúdo do program counter numa instrucao (Opcode + End[reg] + Imediato). Em seguida, envia-se essa instrução para a unidade de controle e a mesma gera os pontos de controle específicos para a execucao deste comando. Depois, o demux escolhe se a instrução vai para a ULA ou para o decoder de endereços, ou seja, para todos os casos exceto os movlcd, o imediato vai para a ULA. 
+
+    Enquanto o imediato vai para a ULA, a instrução também vai para o banco de registradores, onde o conteúdo do endereço do registrador em questão é procurado e enviado para a entrada superior da ULA e também para os registradores do display. No caso dos registradores do display, os mesmos não estarão habilitados a menos que a instrução seja movlcd, o que impede escritas involuntárias.
+
+    Na ULA, a operação add é executada entre o imediato e o conteúdo que foi devolvido pelo banco de registradores. O resultado é armazenado no mesmo registrador envolvido na operação.
+
+   ``` 6) Listagem dos pontos de controle e sua utilização```
+
+   * Dmux ULA/Decoder
+   * Operação
+   * Write/Read
+   * Mux Jump
+
