@@ -167,7 +167,7 @@ Portanto vamos utilizar 6 registradores
     | JNE   | (jump  if< 0)    | 0101    |
     | JE    | (jump equal a=b) | 0110    |
     | SUB   | (sub a-b)        | 0111    |
-    | MOVLCD| (move LCD)       | 1000    | 
+    | MOVD| (move LCD)       | 1000    | 
 
 
 * O total de instruções é 9. 
