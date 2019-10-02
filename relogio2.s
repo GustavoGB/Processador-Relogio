@@ -22,6 +22,7 @@ main:
 
 	cmpio $1, %btempo; COMPARANDO O REGISTRADOR DO CLOCK
 	jne .CLOCK ;ENQUANTO NÃO PASSAR UM SEGUNDO CONTINUA AQUI
+    movd %btempo, $11010 ;MOVE 1 PARA O CLEAR
     cmp $1, %chave1
     je .CHAVE1
     cmp $1, %chave2
