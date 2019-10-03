@@ -159,15 +159,16 @@ Portanto vamos utilizar 6 registradores
 `` 2) Total de instruções e sua sintaxe;``
 
     | Instruções             |Binário |
-    | MOV   | (move)           | 0000    |
+    | MOVR   | (move)           | 0000    |
     | JMP   | (jump)           | 0001    |  
     | CMP   |  (compare)       | 0010    |
-    | JG    | (if jump a>b)    | 0011    | 
-    | ADD   | (add a+b )       | 0100    |
-    | JNE   | (jump  if< 0)    | 0101    |
-    | JE    | (jump equal a=b) | 0110    |
-    | SUB   | (sub a-b)        | 0111    |
-    | MOVD| (move LCD)       | 1000    | 
+    | ADD   | (add a+b )       | 0011    |
+    | JNE   | (jump  if< 0)    | 0100    |
+    | JE    | (jump equal a=b) | 0101    |
+    | SUB   | (sub a-b)        | 0110    |
+    | MOVD| (move LCD)       | 0111    | 
+    | LOADIO|(carrega valor do IO)| 1000    | 
+
 
 
 * O total de instruções é 9. 
