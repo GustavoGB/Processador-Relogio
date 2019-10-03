@@ -15,7 +15,7 @@ entity pc is
     );
 end entity;
 
-architecture pcArc of pc is
+architecture Arc of pc is
 
   signal sig_out_mux, sig_somador : std_logic_vector(largura_PC_dados-1 downto 0);
   signal sig_in_soma : std_logic_vector(largura_PC_dados-1 downto 0) := (others=>'0');

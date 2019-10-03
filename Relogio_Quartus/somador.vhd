@@ -17,7 +17,7 @@ entity somador is
     );
 end entity;
 
-architecture somadorArc of somador is
+architecture Arc of somador is
 
 -- Soma A + 1 e o resultado é armazenado em X.
 -- Faz a operacao com inteiros e retorna o valor em um vector_signal novamente
