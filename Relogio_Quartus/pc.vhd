@@ -23,11 +23,11 @@ architecture Arc of pc is
 begin
 
 	SOMADOR: entity work.somador
-	  Generic Map(DATA_WIDTH=>largura_PC_dados)
+	  Generic Map(largura_dados=>largura_PC_dados)
 	  Port Map(A=>sig_in_soma,clk=>clk,Y=>sig_somador);
 
   MUX: entity work.mux
-	  Generic Map(DATA_WIDTH=> largura_PC_dados)
+	  Generic Map(largura_dados=> largura_PC_dados)
 	  Port Map(A=>sig_somador,B=>imediato,sel=>uc_habilita,Y=>sig_out_mux);
 
 	process(clk)
