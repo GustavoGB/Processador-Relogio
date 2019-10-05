@@ -114,13 +114,13 @@ class Line_Assemble:
         if '(' in immediate:
             immediate = immediate[0:immediate.find('(')]
         immediate = immediate.replace("$", "")
-        r = bindigits(int(immediate), 16)
+        r = bindigits(int(immediate), 5)
         logging.debug('immediate: {}'.format(r))
         return r
 
     def get_j_address(self, label):
         a = self.labels[label]
-        r = bindigits(int(a), 26)
+        r = bindigits(int(a), 9)
         logging.debug('j address: {}'.format(r))
         return r
 
