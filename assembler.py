@@ -79,19 +79,19 @@ class Line_Assemble:
 
     def get_i_instruction(self, instruct):
         table = {'movr': '1', 'cmp':'2', 'add':'3', 'sub': '4', 'movd': '5','loadio': '6'}
-        r = bindigits(int(table[instruct], 16), 5)
+        r = bindigits(int(table[instruct], 16), 4)
         logging.debug('i instruct: {}'.format(r))
         return r
  
     def get_j_instruction(self, instruct):
         table = {'jmp': '7', 'je': '8', 'jne' : '9'}
-        r = bindigits(int(table[instruct], 16), 6)
+        r = bindigits(int(table[instruct], 16), 4)
         logging.debug('j instruct: {}'.format(r))
         return r
 
     def get_d_instruction(self, instruct):
         table = {'movd': 'a'}
-        r = bindigits(int(table[instruct], 16), 6)
+        r = bindigits(int(table[instruct], 16), 4)
         logging.debug('j instruct: {}'.format(r))
         return r
 
@@ -106,7 +106,7 @@ class Line_Assemble:
         table = {'%s1': 'a', '%s2' : '1', '%m1' : '2', '%m2': '3', '%h1' : '4', '%h2': '5', '%chave1': '6', '%chave2': '7', '%chave3': '8',
                  '%btempo': '9'}
 
-        r = bindigits(int(table[register], 16), 5)
+        r = bindigits(int(table[register], 16), 4)
         logging.debug('register: {}'.format(r))
         return r
 
