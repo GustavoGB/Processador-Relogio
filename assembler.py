@@ -11,7 +11,8 @@ def bindigits(n, bits):
 
 class Line_Assemble:
     def __init__(self):
-        self.i_instructions = ['add', 'sub', 'cmp', 'movr', 'movd', 'loadio']
+        self.d_instructions = ['movd']
+        self.i_instructions = ['add', 'sub', 'cmp', 'movr', 'loadio']
         self.j_instructions = ['je', 'jne', 'jmp']
         self.labels = {}
         self.address = 0
@@ -46,6 +47,8 @@ class Line_Assemble:
             tp = 'i'
         elif instruct in self.j_instructions:
             tp = 'j'
+        elif instruct in self.d_instructions:
+            tp = 'd'
         logging.debug('type: {}'.format(tp))
         return tp
 
@@ -62,9 +65,11 @@ class Line_Assemble:
         output = ""
 
         if self.get_instruction_type() == 'i' and len(args) == 2:
-            output = self.get_i_instruction(instruct) + self.get_register(args[0]) + self.get_immediate(args[1])
+            output = self.get_i_instruction(instruct) + self.get_register(args[1]) + self.get_immediate(args[0])
         elif self.get_instruction_type() == 'j':
             output = self.get_j_instruction(instruct) + self.get_j_address(args[0])
+        elif self.get_instruction_type(instruct) == 'd':
+            output = 0
 
         if self.get_instruction_type() != None and self.get_instruction_type() != 'l':
             self.address += 1
@@ -84,6 +89,12 @@ class Line_Assemble:
         logging.debug('j instruct: {}'.format(r))
         return r
 
+    def get_d_instruction(self, instruct):
+        table = {'movd': 'a'}
+        r = bindigits(int(table[instruct], 16), 6)
+        logging.debug('j instruct: {}'.format(r))
+        return r
+        
     def get_register(self, register):
         register = register.strip().replace(' ', '')
         if '(' in register:
@@ -92,8 +103,8 @@ class Line_Assemble:
         if '$' in register:
             register = register[register.find('$')+1:]
 
-        table = {'s1': '0', 's2' : '1', 'm1' : '2', 'm2': '3', 'h1' : '4', 'h2': '5', 'chave1': '6', 'chave2': '7', 'chave3': '8',
-                 'btempo': '9'}
+        table = {'%s1': 'a', '%s2' : '1', '%m1' : '2', '%m2': '3', '%h1' : '4', '%h2': '5', '%chave1': '6', '%chave2': '7', '%chave3': '8',
+                 '%btempo': '9'}
 
         r = bindigits(int(table[register], 16), 5)
         logging.debug('register: {}'.format(r))
@@ -102,7 +113,7 @@ class Line_Assemble:
     def get_immediate(self, immediate):
         if '(' in immediate:
             immediate = immediate[0:immediate.find('(')]
-
+        immediate = immediate.replace("$", "")
         r = bindigits(int(immediate), 16)
         logging.debug('immediate: {}'.format(r))
         return r

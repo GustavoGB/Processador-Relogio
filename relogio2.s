@@ -6,20 +6,20 @@
 	movr $0, %h1
 	movr $0, %h2
 .CLOCK:
-    loadio $11011, %chave1
-    loadio $11100, %chave2
-    loadio $11101, %chave3
-    loadio $11001, %btempo
-	cmp $1, %btempo; COMPARANDO O REGISTRADOR DO CLOCK
-	jne .CLOCK ;ENQUANTO NÃO PASSAR UM SEGUNDO CONTINUA AQUI
-    movd %btempo, $11010 ;MOVE 1 PARA O CLEAR
+    loadio $27, %chave1
+    loadio $28, %chave2
+    loadio $29, %chave3
+    loadio $25, %btempo
+	cmp $1, %btempo 
+	jne .CLOCK 
+    movd %btempo, $26 
     cmp $1, %chave1
     je .CHAVE1
     cmp $1, %chave2
     je .CHAVE2
     cmp $1, %chave3
     je .CHAVE3
-    jmp .CHAVE0 ;SE NENHUMA ESTIVER 1 VAI PRA NORMAL
+    jmp .CHAVE0 
 .CHAVE0:
 .SEGUNDOS:
     add $1, %s1
@@ -65,17 +65,17 @@
     movr $0, %h1
     movr $0, %H2
     jmp .DISPLAY
-.CHAVE1: ;A FAZER
+.CHAVE1:
     jmp .DISPLAY
-.CHAVE2: ; A FAZER
+.CHAVE2:
     jmp .DISPLAY
-.CHAVE3: ; A FAZER
+.CHAVE3:
     jmp .DISPLAY
 .DISPLAY:
-	movd $10001, %s1
-	movd $10010, %s2
-	movd $10011, %m1
-	movd $10100, %m2
-	movd $10101, %h1
-	movd $10111, %h2
+	movd $17, %s1
+	movd $18, %s2
+	movd $19, %m1
+	movd $20, %m2
+	movd $21, %h1
+	movd $22, %h2
     jmp .CLOCK
