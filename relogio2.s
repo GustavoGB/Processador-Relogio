@@ -12,7 +12,7 @@
     loadio $25, %btempo
 	cmp $1, %btempo 
 	jne .CLOCK 
-    movd %btempo, $26 
+    movd $26, %btempo 
     cmp $1, %chave1
     je .CHAVE1
     cmp $1, %chave2
@@ -42,14 +42,14 @@
     movr $0, %m1
     add $1, %m2
     cmp $6, %m2
-    je .h1
+    je .H1
     jmp .DISPLAY
 
 .H1:
     movr $0, %m2
     add $1, %h1
     cmp $5, %h1
-    je .h2
+    je .H2
     jmp .DISPLAY
 .H2:
     movr $0, %h1
@@ -63,7 +63,7 @@
     movr $0, %m1
     movr $0, %m2
     movr $0, %h1
-    movr $0, %H2
+    movr $0, %h2
     jmp .DISPLAY
 .CHAVE1:
     jmp .DISPLAY

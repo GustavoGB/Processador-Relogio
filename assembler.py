@@ -68,8 +68,8 @@ class Line_Assemble:
             output = self.get_i_instruction(instruct) + self.get_register(args[1]) + self.get_immediate(args[0])
         elif self.get_instruction_type() == 'j':
             output = self.get_j_instruction(instruct) + self.get_j_address(args[0])
-        elif self.get_instruction_type(instruct) == 'd':
-            output = 0
+        elif self.get_instruction_type() == 'd':
+            output = self.get_d_instruction(instruct) + self.get_register(args[1]) + self.get_immediate(args[0])
 
         if self.get_instruction_type() != None and self.get_instruction_type() != 'l':
             self.address += 1
@@ -94,7 +94,7 @@ class Line_Assemble:
         r = bindigits(int(table[instruct], 16), 6)
         logging.debug('j instruct: {}'.format(r))
         return r
-        
+
     def get_register(self, register):
         register = register.strip().replace(' ', '')
         if '(' in register:
