@@ -9,13 +9,13 @@ entity decoder is
 	 port
     (
        add_in : in std_logic_vector(ADD_SIZE-1 downto 0); -- Endereco de entrada
-		 readEnable : in std_logic; -- Ativa o read
-		 writeEnable : in std_logic; -- Ativa o write
+		 readEnable : in std_logic; 
+		 writeEnable : in std_logic; 
 		 
-		 eseg70, eseg71, eseg72, eseg73, eseg74, eseg75, eseg76, eseg77 : out std_logic; -- Habilita cada um dos 7seg
-		 esw : out std_logic; -- Habilita os switches
-		 ekey : out std_logic; -- Habilita as keys
-		 ebt : out std_logic -- Habilita a base de tempo
+		 eseg70, eseg71, eseg72, eseg73, eseg74, eseg75, eseg76, eseg77 : out std_logic; 
+		 esw : out std_logic; 
+		 ekey : out std_logic; 
+		 ebt : out std_logic 
 		 
     );
 end entity;
