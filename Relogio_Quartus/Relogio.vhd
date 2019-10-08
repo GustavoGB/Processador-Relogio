@@ -3,8 +3,8 @@ use ieee.std_logic_1164.all;
 
 entity relogio is
     generic (
-        larguraBarramentoEnderecos  : natural := 8;
-        larguraBarramentoDados      : natural := 8;
+        larguraBarramentoEnderecos  : natural := 4;
+        larguraBarramentoDados      : natural := 4;
         quantidadeLedsRed           : natural := 18;
         quantidadeLedsGreen         : natural := 8;
         quantidadeChaves            : natural := 18;
@@ -71,7 +71,7 @@ begin
     -- Instanciação do Decodificador de Endereços
         -- A entidade do decodificador fica a criterio do grupo
         -- o portmap a seguir serve como exemplo
-    DE : entity work.decodificador_enderecos 
+    DE : entity work.decoder 
     port map
     (
         endereco        => endereco,
@@ -81,6 +81,23 @@ begin
         habilitaLedsRed => habilitaLedsRed
         -- ...
     );
+	 
+	     -- Instanciação da Unidade de Controle
+    UC : entity work.UC 
+    generic map (
+        quantidadeLeds  => quantidadeLedsRed
+    )
+    port map
+    (
+		equal => igual,
+		opcode => opcode,
+		ULA_func => ULA_func,
+		Habilita_BancoRegistradores => Habilita_BancoRegistradores,
+		Mux_entradaULA => Mux_entradaULA,
+		Habilita_IO => Habilita_IO,
+		Mux_Jump => Mux_Jump
+    );
+
 
     -- Instanciação do componente Divisor Genérico
         -- Componente da composição da Base de Tempo
@@ -116,7 +133,7 @@ begin
     LEDR : entity work.leds 
     generic map (
         quantidadeLeds  => quantidadeLedsRed
-    );
+    )
     port map
     (
         clk         => clk,
@@ -129,7 +146,7 @@ begin
     LEDG : entity work.leds 
     generic map (
         quantidadeLeds  => quantidadeLedsGreen
-    );
+    )
     port map
     (
         clk         => clk,
@@ -142,26 +159,15 @@ begin
     CHAVES : entity work.chaves 
     generic map (
         quantidadeChaves    => quantidadeChaves
-    );
+    )
     port map
     (
         entradaChaves   => SW(quantidadeChaves-1 DOWNTO 0),
         habilita        => habilitaChaves,
-        saida           => saidaChaves,
+        saida           => saidaChaves
     );
 
     -- Instanciação dos Botões
-    BOTOES : entity work.botoes 
-    generic map (
-        quantidadeBotoes    => quantidadeBotoes
-    );
-    port map
-    (
-        entradaBotoes   => KEY(quantidadeBotoes-1 DOWNTO 0),
-        habilita        => habilitaBotoes,
-        saidaBotoes     => saidaBotoes
-    );
-
     -- Completar com a instanciação de demais componentes necessários 
     -- e ligações entre os sinais auxiliares de saida/entrada e os barramentos da CPU
 

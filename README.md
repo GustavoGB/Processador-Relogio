@@ -152,20 +152,20 @@ Portanto nossa arquitetura possui 16 registradores, mas vamos utilizar apenas 10
 
       LCD:
 
-      movd $18 , %s2   (18 é o endereço do primeiro algarismo dos segundos)    
+      movd $1 , %s2   (18 é o endereço do primeiro algarismo dos segundos)    
 
       movd carrega um registrador e manda pra entrada da ULA, seleciona a função para transferir essa entrada direto para a saída, esse dado vai para o I/O e a escrita no mesmo vai estar habilitada porque a unidade de controle irá habilitá-la ao ver que a instrução é do tipo movd)
 
       CARREGA I/O valor do periféricos:
 
-      loadio $27, %chave1 (27 endereço da chave 1)
+      loadio $8, %chave1 (27 endereço da chave 1)
 
       BASE DE TEMPO:
 
-      loadio %25, %btempo  (25 é o endereço da base de tempo)
+      loadio %6, %btempo  (6 é o endereço da base de tempo)
 
       CLEAR:
-      movd %btempo, %26  (26 é endereço da btempo sabendo que ele tem 1)
+      movd %btempo, %7  (7 é endereço da btempo sabendo que ele tem 1)
       
 
       
@@ -201,16 +201,16 @@ Explicação do fluxo de dados:
     
    * ULA_func:
 
-     1)   add
-     2)   sub
-     3)   and
-     4)   movr
-     5)   movd
-     6)   loadio        
-   * Habilita_BancoRegistradores
-   * Mux entrada_ULA
-   * Habilita_I/O
-   * Mux Jump
+     1)   add : 000
+     2)   sub : 001
+     3)   and (cmp) : 100
+     4)   movr : É o RetA
+     5)   movd : É o RetB
+     6)   loadio : É o RetA   
+   * Habilita_BancoRegistradores: 1 escrita.
+   * Mux_entrada_ULA: 1 para imediato, 0 para I/O
+   * Habilita_I/O : 1 escrita.
+   * Mux_Jump : 1 para jump 0 normal.   
 
    
    

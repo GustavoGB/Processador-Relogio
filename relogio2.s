@@ -6,19 +6,16 @@
 	movr $0, %h1
 	movr $0, %h2
 .CLOCK:
-    loadio $27, %chave1
-    loadio $28, %chave2
-    loadio $29, %chave3
-    loadio $25, %btempo
+    loadio $8, %chave1 
+    loadio $9, %chave2 
+    loadio $6, %btempo
 	cmp $1, %btempo 
 	jne .CLOCK 
-    movd $26, %btempo 
+    movd $7, %btempo 
     cmp $1, %chave1
     je .CHAVE1
     cmp $1, %chave2
     je .CHAVE2
-    cmp $1, %chave3
-    je .CHAVE3
     jmp .CHAVE0 
 .CHAVE0:
 .SEGUNDOS:
@@ -72,10 +69,10 @@
 .CHAVE3:
     jmp .DISPLAY
 .DISPLAY:
-	movd $17, %s1
-	movd $18, %s2
-	movd $19, %m1
-	movd $20, %m2
-	movd $21, %h1
-	movd $22, %h2
+	movd $0, %s1
+	movd $1, %s2
+	movd $2, %m1
+	movd $3, %m2
+	movd $4, %h1
+	movd $5, %h2
     jmp .CLOCK

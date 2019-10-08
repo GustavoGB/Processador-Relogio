@@ -8,7 +8,7 @@ entity decoder is
 	 );
 	 port
     (
-       add_in : in std_logic_vector(ADD_SIZE-1 downto 0); -- Endereco de entrada
+       endereco : in std_logic_vector(ADD_SIZE-1 downto 0); -- Endereco de entrada
 		 readEnable : in std_logic; 
 		 writeEnable : in std_logic; 
 		 

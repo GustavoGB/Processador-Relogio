@@ -1,0 +1,23 @@
+-- does not create the library; it simply forward declares 
+-- it. 
+library ieee;
+
+-- Use clauses import declarations into the current scope.	
+-- If more than one use clause imports the same name into the
+-- the same scope, none of the names are imported.
+
+-- Import all the declarations in a package
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+-- does not create the library; it simply forward declares 
+-- it. 
+library ieee;
+
+-- Use clauses import declarations into the current scope.	
+-- If more than one use clause imports the same name into the
+-- the same scope, none of the names are imported.
+
+-- Import all the declarations in a package
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;

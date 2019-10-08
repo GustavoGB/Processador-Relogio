@@ -32,7 +32,7 @@ begin
     BR : entity work.bancoRegistradores 
     generic map (
         larguraDados    => larguraBarramentoDados
-    );
+    )
     port map
     (
         clk                 => clk,
@@ -46,7 +46,7 @@ begin
     );
 
     -- Instanciação de Banco de Registradores
-    PC : entity work.registradorGenerico  
+    PC : entity work.RegFlipFlop  
     -- generic map (
     -- );
     port map
@@ -59,10 +59,10 @@ begin
     );
 
     -- Instanciação de MUX
-    MUX1 : entity work.muxGenerico2 
+    MUX1 : entity work.mux 
     generic map (
         larguraDados    => larguraBarramentoDados
-    );
+    )
     port map
     (
         entradaA_MUX            => entradaA_MUX,
@@ -74,11 +74,11 @@ begin
     -- ...
 
     -- Instanciação de Somador com Constante
-    SOMADOR1 : entity work.soma4 
+    SOMADOR1 : entity work.somador 
     generic map (
-        larguraDados    => larguraBarramentoDados;
+        larguraDados    => larguraBarramentoDados,
         incremento      => 4
-    );
+    )
     port map
     (
         entrada         => entrada_somador,

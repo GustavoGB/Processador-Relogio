@@ -1,0 +1,40 @@
+library IEEE;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity decoder is
+    Generic(
+		ADD_SIZE: natural := 4
+	 );
+	 port
+    (
+       add_in : in std_logic_vector(ADD_SIZE-1 downto 0); -- Endereco de entrada
+		 readEnable : in std_logic; 
+		 writeEnable : in std_logic; 
+		 
+		 eseg70, eseg71, eseg72, eseg73, eseg74, eseg75, eseg76, eseg77 : out std_logic; 
+		 esw : out std_logic; 
+		 ekey : out std_logic; 
+		 ebt : out std_logic 
+		 
+    );
+end entity;
+
+architecture Arc of decoder is
+
+
+begin
+
+		eseg70 <= '1' when (add_in = "00000000" AND writeEnable = '1') else '0';
+		eseg71 <= '1' when (add_in = "00000001" AND writeEnable = '1') else '0';
+		eseg72 <= '1' when (add_in = "00000010" AND writeEnable = '1') else '0';
+		eseg73 <= '1' when (add_in = "00000011" AND writeEnable = '1') else '0';
+		eseg74 <= '1' when (add_in = "00000100" AND writeEnable = '1') else '0';
+		eseg75 <= '1' when (add_in = "00000101" AND writeEnable = '1') else '0';
+		eseg76 <= '1' when (add_in = "00000110" AND writeEnable = '1') else '0';
+		eseg77 <= '1' when (add_in = "00000111" AND writeEnable = '1') else '0';
+		esw    <= '1' when (add_in = "00001000" AND readEnable = '1') else '0';
+		ekey <= '1'   when (add_in = "00001001" AND readEnable = '1') else '0';
+		ebt <= '1'    when (add_in = "00001010" AND readEnable = '1') else '0';
+			
+end architecture;

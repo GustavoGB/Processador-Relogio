@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all; -- Utilizado para o Generic
 
 entity pc is
-    generic (largura_PC_dados : natural := 10);
+    generic (largura_PC_dados : natural := 8);
     
 	 port
     (
