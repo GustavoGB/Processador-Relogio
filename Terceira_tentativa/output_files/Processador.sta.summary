@@ -1,0 +1,113 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLK'
+Slack : -4.833
+TNS   : -114.267
+
+Type  : Slow 1200mV 85C Model Setup 'pc:PC|instrucao[0]'
+Slack : -3.281
+TNS   : -3.281
+
+Type  : Slow 1200mV 85C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -2.969
+TNS   : -35.271
+
+Type  : Slow 1200mV 85C Model Hold 'CLK'
+Slack : 0.443
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'pc:PC|instrucao[0]'
+Slack : 0.540
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.708
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -37.695
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.285
+TNS   : -20.560
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'pc:PC|instrucao[0]'
+Slack : 0.447
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLK'
+Slack : -4.377
+TNS   : -102.800
+
+Type  : Slow 1200mV 0C Model Setup 'pc:PC|instrucao[0]'
+Slack : -2.950
+TNS   : -2.950
+
+Type  : Slow 1200mV 0C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -2.561
+TNS   : -31.188
+
+Type  : Slow 1200mV 0C Model Hold 'CLK'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'pc:PC|instrucao[0]'
+Slack : 0.485
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.676
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -37.695
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.285
+TNS   : -20.560
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'pc:PC|instrucao[0]'
+Slack : 0.382
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLK'
+Slack : -1.941
+TNS   : -42.306
+
+Type  : Fast 1200mV 0C Model Setup 'pc:PC|instrucao[0]'
+Slack : -1.294
+TNS   : -1.294
+
+Type  : Fast 1200mV 0C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.076
+TNS   : -12.881
+
+Type  : Fast 1200mV 0C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.190
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'pc:PC|instrucao[0]'
+Slack : 0.191
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLK'
+Slack : 0.201
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK'
+Slack : -3.000
+TNS   : -31.513
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.000
+TNS   : -16.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'pc:PC|instrucao[0]'
+Slack : 0.349
+TNS   : 0.000
+
+------------------------------------------------------------
