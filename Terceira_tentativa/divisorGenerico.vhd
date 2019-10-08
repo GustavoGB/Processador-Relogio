@@ -18,14 +18,13 @@ LIBRARY ieee;
  architecture divInteiro of divisorGenerico is
         signal tick : std_logic := '0';
         signal contador : integer range 0 to divisor1+1 := 0;
-		  signal esw : std_logic;
    begin
         process(clk)
         begin
             if rising_edge(clk) then
-					if clear = '1' then
-						contador <= 0;
-					end if;
+				--	if clear = '1' then
+					--	contador <= 0;
+					--end if;
 					if key(0) = '1' and key(1) = '1' then
 						if contador = divisor3 then
 							  contador <= 0;

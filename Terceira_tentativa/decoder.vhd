@@ -10,7 +10,6 @@ entity decoder is
 		 writeEnable : in std_logic;  
 		 eseg70, eseg71, eseg72, eseg73, eseg74, eseg75, eseg76, eseg77 : out std_logic; 
 		 esw : out std_logic;
-		 ekey : out std_logic; 
 		 ebt : out std_logic;
 		 clear : out std_logic
 		 
@@ -31,7 +30,6 @@ begin
 		eseg76 <= '1' when (endereco = "1111" AND writeEnable = '1') else '0'; --Não estamos usando
 		eseg77 <= '1' when (endereco = "1111" AND writeEnable = '1') else '0'; --Não estamos usando
 		esw    <= '1' when ((endereco = "1000" AND readEnable = '1') or (endereco = "1001" AND readEnable = '1')) else '0';
-		ekey <= '1'   when (endereco = "1001" AND readEnable = '1') else '0';
 		ebt <= '1'    when (endereco = "0110" AND readEnable = '1') else '0';
 		clear <= '1' when (endereco = "0111" AND readEnable = '1') else '0';
 			

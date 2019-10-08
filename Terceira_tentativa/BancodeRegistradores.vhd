@@ -19,7 +19,7 @@ entity BancodeRegistradores is
 --
         dadoEscrita    : in std_logic_vector((larguraDados-1) downto 0);
 --
-        escreve        : in std_logic := '0';
+        escreve        : in std_logic;
         saida          : out std_logic_vector((larguraDados -1) downto 0)
     );
 end entity;

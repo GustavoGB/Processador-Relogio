@@ -1,0 +1,31 @@
+Quartus Prime Archive log --	C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador_Intermediario.qarlog
+
+Archive:	C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador_Intermediario.qar
+Date:		Tue Oct 08 17:54:46 2019
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/BancodeRegistradores.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.qpf
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.qsf
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/UC.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/chaves.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/conversorHex7SegDisplay.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/decoder.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/display7seg.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflop.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/io.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/leds.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/mux.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxULA.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/pc.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/rom.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/somador.vhd
+C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/ula.vhd
+c:/intelfpga_lite/17.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 20 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

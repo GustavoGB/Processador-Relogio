@@ -1,15 +1,13 @@
 .INIT:
-	movr $0, %s1
-	movr $0, %s2
-	movr $0, %m1
+	movr $1, %s1
+	movr $1, %s2
+	movr $1, %m1
 	movr $0, %m2
 	movr $0, %h1
 	movr $0, %h2
 .CLOCK:
-    loadio $8, %chave1 
-    loadio $9, %chave2 
     loadio $6, %btempo
-	cmp $1, %btempo 
+	cmp $4, %btempo 
 	jne .CLOCK 
     movd $7, %btempo 
     jmp .CHAVE0 

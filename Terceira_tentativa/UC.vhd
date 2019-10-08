@@ -43,7 +43,7 @@ end UC;
 -- Use Clause(s) (optional)
 
 architecture Arch of UC is
-	
+	constant jmp : std_logic_vector(3 downto 0) := "1001";
 	constant je : std_logic_vector(3 downto 0) := "0101";
 	constant jne : std_logic_vector(3 downto 0) := "0100";
 	constant movd : std_logic_vector(3 downto 0) := "0111";
@@ -56,20 +56,34 @@ architecture Arch of UC is
 begin
 	process(opcode, igual)
 	begin
-		if (opcode = jne) then
-			if (igual = "000") then
-				Mux_Jump <= '1';
-			end if;
+		if (opcode = jmp) then
+			Mux_Jump <= '1';
 		else
-			if (opcode = je) then
-				if (igual = "001") then
+		
+			if (opcode = jne) then
+				if (igual = "000") then
 					Mux_Jump <= '1';
+				else 
+					Mux_Jump <= '0';
 				end if;
-			else 
-				Mux_Jump <= '0';
+			else
+				if (opcode = je) then
+					if (igual = "001") then
+						Mux_Jump <= '1';
+					else 
+						Mux_Jump <= '0';
+					end if;
+				else 
+					Mux_Jump <= '0';
+				end if;
 			end if;
+		
 		end if;
 	end process;
+	
+	with opcode select Habilita_BancoRegistradores <=
+		'1' when (movr or loadio or add),
+		'0' when others;
 
 	with opcode select ULA_func <= 
 		"000" when add,
@@ -78,7 +92,7 @@ begin
 		"011" when movd,
 		"100" when cmp,
 		"010" when movr,--Sempre movemos o imediato para o banco, Retorna a entrada A quando movr
-		"010" when others;
+		"111" when others;
 
 	with opcode select Habilita_IO <= 
 		'1' when movd,

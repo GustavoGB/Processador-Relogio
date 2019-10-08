@@ -13,14 +13,14 @@ entity Relogio is
     );
     port
     (
-        CLK : IN STD_LOGIC;
+        CLOCK3_50 : IN STD_LOGIC;
         -- BOTOES
-        KEY: IN STD_LOGIC_VECTOR(quantidadeBotoes-1 DOWNTO 0);
+        --KEY: IN STD_LOGIC_VECTOR(quantidadeBotoes-1 DOWNTO 0);
         -- CHAVES
         SW : IN STD_LOGIC_VECTOR(quantidadeChaves-1 downto 0);
         
         -- LEDS
-        LEDR : OUT STD_LOGIC_VECTOR(quantidadeLedsRed-1 downto 0);
+        --LEDR : OUT STD_LOGIC_VECTOR(quantidadeLedsRed-1 downto 0);
         LEDG : OUT STD_LOGIC_VECTOR(quantidadeLedsGreen-1 downto 0);
         -- DISPLAYS 7 SEG
         HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7 : OUT STD_LOGIC_VECTOR(6 downto 0)
@@ -33,14 +33,14 @@ architecture estrutural of Relogio is
     signal barramentoEnderecos      : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
     signal barramentoDadosEntrada   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
     signal barramentoDadosSaida     : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
-    signal sig_endereco     : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
-    signal sig_somador     : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
-	 signal sig_instrucao: STD_LOGIC_VECTOR(11 DOWNTO 0);
-    signal saidaMuxJump   : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
+    signal sig_endereco             : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
+    signal sig_somador              : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
+	 signal sig_instrucao            : STD_LOGIC_VECTOR(11 DOWNTO 0);
+    signal saidaMuxJump             : STD_LOGIC_VECTOR(larguraBarramentoEnderecos-1 DOWNTO 0);
     signal saidaMuxULA   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
     signal saidaULA   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
     signal saidaBancoReg   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
-    signal saidaChaves   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
+    signal saidaIO   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
 
     -- Sinais de controle RD/WR
     signal readEnableDisplay               : STD_LOGIC;
@@ -51,7 +51,7 @@ architecture estrutural of Relogio is
     signal habilitaLedsRed          : STD_LOGIC_VECTOR(quantidadeLedsRed-1 DOWNTO 0);
     signal habilitaLedsGreen        : STD_LOGIC_VECTOR(quantidadeLedsGreen-1 DOWNTO 0);
     signal habChaves           : STD_LOGIC;
-    signal habilitaBotoes           : std_logic;
+    --signal habilitaBotoes           : std_logic;
     signal habilitaBaseTempo        : STD_LOGIC;
     signal habilitaBanco          : std_logic;
 	 signal sig_equal: std_logic_vector(2 downto 0);
@@ -62,12 +62,13 @@ architecture estrutural of Relogio is
 
     -- Sinais auxiliares
     signal entradaDisplays          : STD_LOGIC_VECTOR(quantidadeDisplays-1 DOWNTO 0);
-    signal entradaLedsRed           : STD_LOGIC_VECTOR(quantidadeLedsRed-1 DOWNTO 0);
+    --signal entradaLedsRed           : STD_LOGIC_VECTOR(quantidadeLedsRed-1 DOWNTO 0);
     signal entradaLedsGreen         : STD_LOGIC_VECTOR(quantidadeLedsGreen-1 DOWNTO 0);
     signal saidaBotoes              : STD_LOGIC_VECTOR(quantidadeBotoes-1 DOWNTO 0);
     signal saidaClock     : STD_LOGIC;
 	 signal sig_clear : std_logic;
 begin
+		LEDG <= sig_endereco;
     DE : entity work.decoder 
     port map
     (
@@ -83,7 +84,6 @@ begin
 		 eseg76 => habilitaDisplay(6), 
 		 eseg77 => habilitaDisplay(7),
 		 esw => habChaves,
-		 ekey => habilitaBotoes,
 		 ebt => habilitaBaseTempo,
 		 clear => sig_clear
     );
@@ -92,7 +92,6 @@ begin
 	 port map
 	 (
 		A => sig_endereco,
-		clk => saidaClock,
 		X => sig_somador
 	 );
 	 
@@ -108,7 +107,7 @@ begin
 	 PC : entity work.pc 
     port map
     (
-	   clk => saidaClock,
+	   clk => CLOCK3_50,
       A => saidaMuxJump ,
       instrucao => sig_endereco
     );
@@ -138,7 +137,7 @@ begin
 	 Mux_entrada_ULA: entity work.muxULA
 	 port map
 	 (
-		 A => saidaChaves,
+		 A => saidaIO,
        B => sig_instrucao(11 downto 8),		 
 		 sel => Mux_entradaULA,
 		 X => saidaMuxULA
@@ -146,7 +145,7 @@ begin
 	 
 	 BR: entity work.BancodeRegistradores
 	 port map(
-        clk => saidaClock,
+        clk => CLOCK3_50,
         endereco => sig_instrucao(7 downto 4),
         dadoEscrita  => saidaULA,
         escreve    => habilitaBanco,
@@ -169,19 +168,18 @@ begin
     BASE_TEMPO : entity work.divisorGenerico 
     port map
     (
-        clk             => CLK,
+        clk             => CLOCK3_50,
 		  key 				=> SW,
 		  clear 				=> sig_clear,
         saida_clk       => saidaClock
     );
-
     -- Instanciação de cada Display
     DISPLAY0 : entity work.conversorHex7SegDisplay 
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(0),
+        habilita    => not habilitaDisplay(0),
         saida7seg   => HEX0
     );
 
@@ -189,59 +187,73 @@ begin
     DISPLAY1 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(1),
+        habilita    => not habilitaDisplay(1),
         saida7seg   => HEX1
     );
     -- Instanciação de cada Display
     DISPLAY2 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(2),
+        habilita    => not habilitaDisplay(2),
         saida7seg   => HEX2
     );
     -- Instanciação de cada Display
     DISPLAY3 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(3),
+        habilita    => not habilitaDisplay(3),
         saida7seg   => HEX3
     );
     -- Instanciação de cada Display
     DISPLAY4 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(4),
+        habilita    => not habilitaDisplay(4),
         saida7seg   => HEX4
     );
     -- Instanciação de cada Display
     DISPLAY5 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => saidaClock,
+        clk         => CLOCK3_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    => habilitaDisplay(5),
+        habilita    => not habilitaDisplay(5),
         saida7seg   => HEX5
     );
-
+    -- Instanciação de cada Display
+    DISPLAY6 : entity work.conversorHex7SegDisplay  
+    port map
+    (
+        clk         => CLOCK3_50,
+        dadoHex     => "0000", 
+        habilita    => '1',
+        saida7seg   => HEX6
+    );    -- Instanciação de cada Display
+    DISPLAY7 : entity work.conversorHex7SegDisplay  
+    port map
+    (
+        clk         => CLOCK3_50,
+        dadoHex     => "0000",
+        habilita    => '1',
+        saida7seg   => HEX7
+    );
     -- Instanciação das Chaves
-    CHAVE : entity work.chaves 
+    IO : entity work.io 
     port map
     (
         entradaChaves   => SW(quantidadeChaves-1 DOWNTO 0),
-        habilita        => habChaves,
-        saida           => saidaChaves
+		  entradaBaseTempo => saidaClock,
+		  habilitaBaseTempo => habilitaBaseTempo,
+        habilitaChaves        => habChaves,
+        saida           => saidaIO
     );
-
-    -- Instanciação dos Botões
-    -- Completar com a instanciação de demais componentes necessários 
-    -- e ligações entre os sinais auxiliares de saida/entrada e os barramentos da CPU
-
+	 
 end architecture;
