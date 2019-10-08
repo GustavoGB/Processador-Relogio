@@ -15,7 +15,7 @@ LIBRARY ieee;
 	
  architecture divInteiro of divisorGenerico is
         signal tick : std_logic := '0';
-        signal contador : integer range 0 to divisor+1 := 0;
+        signal contador : integer range 0 to divisor1+1 := 0;
    begin
         process(clk)
         begin

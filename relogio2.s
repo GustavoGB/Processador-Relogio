@@ -12,10 +12,6 @@
 	cmp $1, %btempo 
 	jne .CLOCK 
     movd $7, %btempo 
-    cmp $1, %chave1
-    je .CHAVE1
-    cmp $1, %chave2
-    je .CHAVE2
     jmp .CHAVE0 
 .CHAVE0:
 .SEGUNDOS:
@@ -61,12 +57,6 @@
     movr $0, %m2
     movr $0, %h1
     movr $0, %h2
-    jmp .DISPLAY
-.CHAVE1:
-    jmp .DISPLAY
-.CHAVE2:
-    jmp .DISPLAY
-.CHAVE3:
     jmp .DISPLAY
 .DISPLAY:
 	movd $0, %s1

@@ -35,7 +35,7 @@ entity UC is
 		Habilita_IO: out std_logic;
 		Mux_Jump: out std_logic
 	);
-end uc;
+end UC;
 
 
 -- Library Clause(s) (optional)
