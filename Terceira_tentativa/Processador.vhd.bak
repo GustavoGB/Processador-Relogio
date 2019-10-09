@@ -1,0 +1,18 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Processador is
+	Generic ( largura_Dados : natural := 4 );
+	
+	port
+	(
+		Endereco: in std_logic_vector(7 downto 0);
+		Opcode: in std_logic_vector(7 downto 0);
+		DataIO: in std_logic_vector(3 downto 0);
+		DataOut: out std_logic_vector(3 downto 0);
+		ReadIO: out std_logic;
+		WriteIO: out std_logic;
+		AddrIO: out std_logic_vector(7 downto 0)
+	);
+end Processador;
