@@ -1,7 +1,7 @@
 .INIT:
-	movr $1, %s1
-	movr $1, %s2
-	movr $1, %m1
+	movr $0, %s1
+	movr $0, %s2
+	movr $0, %m1
 	movr $0, %m2
 	movr $0, %h1
 	movr $0, %h2

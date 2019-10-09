@@ -16,26 +16,10 @@
 <TH>Output only Bidir</TH>
 </TR>
 <TR >
-<TD >IO</TD>
-<TD >5</TD>
-<TD >1</TD>
-<TD >1</TD>
-<TD >1</TD>
-<TD >4</TD>
-<TD >1</TD>
-<TD >1</TD>
-<TD >1</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-</TR>
-<TR >
 <TD >DISPLAY7</TD>
 <TD >6</TD>
 <TD >5</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >5</TD>
 <TD >7</TD>
 <TD >5</TD>
@@ -51,7 +35,7 @@
 <TD >DISPLAY6</TD>
 <TD >6</TD>
 <TD >5</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >5</TD>
 <TD >7</TD>
 <TD >5</TD>
@@ -67,7 +51,7 @@
 <TD >DISPLAY5</TD>
 <TD >6</TD>
 <TD >0</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >0</TD>
 <TD >7</TD>
 <TD >0</TD>
@@ -83,7 +67,7 @@
 <TD >DISPLAY4</TD>
 <TD >6</TD>
 <TD >0</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >0</TD>
 <TD >7</TD>
 <TD >0</TD>
@@ -99,7 +83,7 @@
 <TD >DISPLAY3</TD>
 <TD >6</TD>
 <TD >0</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >0</TD>
 <TD >7</TD>
 <TD >0</TD>
@@ -115,7 +99,7 @@
 <TD >DISPLAY2</TD>
 <TD >6</TD>
 <TD >0</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >0</TD>
 <TD >7</TD>
 <TD >0</TD>
@@ -131,7 +115,7 @@
 <TD >DISPLAY1</TD>
 <TD >6</TD>
 <TD >0</TD>
-<TD >1</TD>
+<TD >0</TD>
 <TD >0</TD>
 <TD >7</TD>
 <TD >0</TD>
@@ -146,13 +130,13 @@
 <TR >
 <TD >DISPLAY0</TD>
 <TD >6</TD>
-<TD >0</TD>
 <TD >1</TD>
 <TD >0</TD>
+<TD >1</TD>
 <TD >7</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
+<TD >1</TD>
+<TD >1</TD>
+<TD >1</TD>
 <TD >0</TD>
 <TD >0</TD>
 <TD >0</TD>
@@ -160,8 +144,24 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >BASE_TEMPO</TD>
+<TD >Mux_Vel</TD>
+<TD >3</TD>
+<TD >3</TD>
+<TD >0</TD>
+<TD >3</TD>
 <TD >4</TD>
+<TD >3</TD>
+<TD >3</TD>
+<TD >3</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >BASE_TEMPO3</TD>
+<TD >3</TD>
 <TD >0</TD>
 <TD >1</TD>
 <TD >0</TD>
@@ -176,15 +176,31 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >ULA</TD>
+<TD >BASE_TEMPO2</TD>
+<TD >3</TD>
+<TD >0</TD>
+<TD >1</TD>
+<TD >0</TD>
+<TD >1</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >PR|ULA</TD>
 <TD >11</TD>
-<TD >2</TD>
+<TD >1</TD>
 <TD >0</TD>
-<TD >2</TD>
+<TD >1</TD>
 <TD >7</TD>
-<TD >2</TD>
-<TD >2</TD>
-<TD >2</TD>
+<TD >1</TD>
+<TD >1</TD>
+<TD >1</TD>
 <TD >0</TD>
 <TD >0</TD>
 <TD >0</TD>
@@ -192,7 +208,7 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >BR</TD>
+<TD >PR|BR</TD>
 <TD >10</TD>
 <TD >0</TD>
 <TD >0</TD>
@@ -208,7 +224,7 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >Mux_entrada_ULA</TD>
+<TD >PR|Mux_entrada_ULA</TD>
 <TD >9</TD>
 <TD >0</TD>
 <TD >0</TD>
@@ -224,12 +240,76 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >UC</TD>
+<TD >PR|UC</TD>
 <TD >7</TD>
 <TD >0</TD>
 <TD >0</TD>
 <TD >0</TD>
 <TD >8</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >PR|PC</TD>
+<TD >9</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >8</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >PR|Mux2_Jump</TD>
+<TD >17</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >8</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >PR|Somador</TD>
+<TD >8</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >8</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >PR</TD>
+<TD >17</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >14</TD>
 <TD >0</TD>
 <TD >0</TD>
 <TD >0</TD>
@@ -256,60 +336,28 @@
 <TD >0</TD>
 </TR>
 <TR >
-<TD >PC</TD>
-<TD >9</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >8</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-</TR>
-<TR >
-<TD >Mux2_Jump</TD>
-<TD >17</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >8</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-</TR>
-<TR >
-<TD >Somador</TD>
-<TD >8</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >8</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-<TD >0</TD>
-</TR>
-<TR >
 <TD >DE</TD>
 <TD >6</TD>
+<TD >5</TD>
+<TD >0</TD>
+<TD >5</TD>
+<TD >11</TD>
+<TD >5</TD>
+<TD >5</TD>
+<TD >5</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+<TD >0</TD>
+</TR>
+<TR >
+<TD >BASE_TEMPO</TD>
+<TD >3</TD>
 <TD >2</TD>
 <TD >0</TD>
 <TD >2</TD>
-<TD >11</TD>
+<TD >1</TD>
 <TD >2</TD>
 <TD >2</TD>
 <TD >2</TD>

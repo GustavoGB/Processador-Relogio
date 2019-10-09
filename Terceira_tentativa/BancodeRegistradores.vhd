@@ -42,13 +42,6 @@ begin
         end if;
     end process;
 
-    -- IF endereco = 0 : retorna ZERO
-     process(all) is
-     begin
-         if (unsigned(endereco) = 0) then
-            saida <= (others => '0');
-         else
             saida <= registrador(to_integer(unsigned(endereco)));
-         end if;
-     end process;
+         
 end architecture;

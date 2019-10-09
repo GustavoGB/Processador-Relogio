@@ -33,7 +33,7 @@ architecture comportamento of conversorHex7SegDisplay is
 
 begin
 		
-			 saida7seg <=    "1000000" when dadoHex="0000" and habilita = '1' else ---0
+			 rascSaida7seg <=    "1000000" when dadoHex="0000" and habilita = '1' else ---0
 											 "1111001" when dadoHex="0001" and habilita = '1' else ---1
 											 "0100100" when dadoHex="0010" and habilita = '1' else ---2
 											 "0110000" when dadoHex="0011" and habilita = '1' else ---3
@@ -50,5 +50,16 @@ begin
 											 "0000110" when dadoHex="1110" and habilita = '1' else ---E
 											 "0001110" when dadoHex="1111" and habilita = '1' else ---F
 											 "1111111"; -- Apaga todos segmentos.
+											 
+											 
+	process(clk)
+		begin
+		if(rising_edge(clk)) then
+			if(habilita = '1') then
+				saida7seg <=	rascSaida7seg;
+			end if;
+		end if;
+	end process;			
+							 
 	
 end architecture;

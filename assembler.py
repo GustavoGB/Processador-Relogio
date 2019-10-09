@@ -172,6 +172,8 @@ class MIPS_MIF_Format:
         self.current_addr += self.increment_by
 
     def end(self):
+        if self.current_addr < 2**self.addr-1:
+            self.stream.write('[{}..{}]:   {};\n'.format(self.current_addr, 2**self.addr-1, ''.zfill(12)))
         self.stream.write('END;\n')
 
 class MIPS_Assemble:

@@ -1,3 +1,7 @@
-movr $3, %s1
+.INIT:
+loadio $6, %btempo
+cmp $1, %btempo
+jne .INIT
 add $1, %s1
-movd $1, %s1
+movd $2, %s2
+jmp .INIT

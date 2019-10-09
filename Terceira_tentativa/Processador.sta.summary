@@ -2,4 +2,76 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 85C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -7.589
+TNS   : -158.429
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : -4.067
+TNS   : -192.876
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.402
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.639
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -99.375
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.285
+TNS   : -48.830
+
+Type  : Slow 1200mV 0C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -6.802
+TNS   : -141.052
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -3.668
+TNS   : -169.296
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.354
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.584
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -99.375
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.285
+TNS   : -48.830
+
+Type  : Fast 1200mV 0C Model Setup 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -3.299
+TNS   : -59.254
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : -1.576
+TNS   : -54.776
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'divisorGenerico:BASE_TEMPO|tick'
+Slack : 0.291
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : -3.000
+TNS   : -100.142
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'divisorGenerico:BASE_TEMPO|tick'
+Slack : -1.000
+TNS   : -38.000
+
 ------------------------------------------------------------

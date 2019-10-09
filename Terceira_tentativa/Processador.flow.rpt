@@ -1,5 +1,5 @@
 Flow report for Processador
-Tue Oct 08 19:36:20 2019
+Wed Oct 09 15:51:46 2019
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -40,18 +40,18 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Oct 08 19:36:15 2019       ;
+; Flow Status                        ; Successful - Wed Oct 09 15:51:42 2019       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Processador                                 ;
 ; Top-level Entity Name              ; Relogio                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Device                             ; EP4CE115F29C8                               ;
+; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 0 / 114,480 ( 0 % )                         ;
-;     Total combinational functions  ; 0 / 114,480 ( 0 % )                         ;
-;     Dedicated logic registers      ; 0 / 114,480 ( 0 % )                         ;
-; Total registers                    ; 0                                           ;
-; Total pins                         ; 67 / 529 ( 13 % )                           ;
+; Total logic elements               ; 179 / 114,480 ( < 1 % )                     ;
+;     Total combinational functions  ; 176 / 114,480 ( < 1 % )                     ;
+;     Dedicated logic registers      ; 91 / 114,480 ( < 1 % )                      ;
+; Total registers                    ; 113                                         ;
+; Total pins                         ; 101 / 529 ( 19 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0 / 3,981,312 ( 0 % )                       ;
 ; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/08/2019 19:35:43 ;
+; Start date & time ; 10/09/2019 15:51:00 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Processador         ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 257967352387257.157057414306596        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 257967352387257.157064705904056        ; --            ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --             ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; Relogio     ; Top            ;
@@ -95,11 +95,11 @@ refer to the applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:15     ; 1.0                     ; 4797 MB             ; 00:00:27                           ;
-; Fitter                    ; 00:00:12     ; 1.0                     ; 5407 MB             ; 00:00:15                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 4683 MB             ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4828 MB             ; 00:00:03                           ;
-; Total                     ; 00:00:34     ; --                      ; --                  ; 00:00:49                           ;
+; Analysis & Synthesis      ; 00:00:19     ; 1.0                     ; 4799 MB             ; 00:00:40                           ;
+; Fitter                    ; 00:00:19     ; 1.0                     ; 5432 MB             ; 00:00:25                           ;
+; Assembler                 ; 00:00:04     ; 1.0                     ; 4686 MB             ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 4823 MB             ; 00:00:03                           ;
+; Total                     ; 00:00:45     ; --                      ; --                  ; 00:01:11                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -50,15 +50,11 @@ begin
 	set_igual <= "001" when (to_integer(unsigned(A AND B)) > 0) else
 		"000";
 	
-	with func select C <=
-		std_logic_vector(unsigned(A) + unsigned(B)) when Add,
-		std_logic_vector(unsigned(A) - unsigned(b)) when Sub,
-		B when RetB,
-      A when RetA,
-		"0000" when others;
-		  
-	with func select equal <=
-		set_igual when Cmp,
-		"000" when others;
+	C <= std_logic_vector(unsigned(A) + unsigned(B)) when (func = Add) else
+		std_logic_vector(unsigned(A) - unsigned(b)) when (func = Sub) else
+		B when (func = RetB) else
+		A when (func = RetA) else "0000";
 	
+	equal <= set_igual when (func = Cmp) else "100";	  
+
 end Arch;
