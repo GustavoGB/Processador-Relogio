@@ -63,6 +63,7 @@ architecture estrutural of Relogio is
     --signal entradaLedsRed           : STD_LOGIC_VECTOR(quantidadeLedsRed-1 DOWNTO 0);
     signal entradaLedsGreen         : STD_LOGIC_VECTOR(quantidadeLedsGreen-1 DOWNTO 0);
     signal saidaBotoes              : STD_LOGIC_VECTOR(quantidadeBotoes-1 DOWNTO 0);
+	 signal saidaMUXClock     : STD_LOGIC;
     signal saidaClock     : STD_LOGIC_vector (3 downto 0);
 	 signal sig_clear : std_logic;
 	 signal testeClock : std_logic;
@@ -72,19 +73,6 @@ begin
 
 
 		LEDG <= sig_endereco;
-		
-		BASE_TEMPO : entity work.divisorGenerico 
-	generic map
-    (
-	 divisor =>  50000000
-	 )
-    port map
-    (
-        clk             => CLOCK_50,
-		  hab 				=> '1',
-		  clear 				=> '0',
-        saida_clk       => testeCLOCK
-    );
 		
 		
     DE : entity work.decoder 
@@ -116,8 +104,8 @@ begin
 	PR: entity work.Processador 	 
 	port map
 	(
-		CLK => testeCLOCK,
-		Endereco => sig_instrucao(11 downto 4),
+		CLK => CLOCK_50,
+		Endereco => sig_instrucao(7 downto 0),
 		Opcode => sig_instrucao(11 downto 8),
 		DataIO => saidaClock,
 		DataOut => saidaULA,
@@ -133,8 +121,6 @@ begin
     port map
     (
         clk             => CLOCK_50,
-		  hab 				=> SW(0),
-		  clear 				=> sig_clear,
         saida_clk       => saidaVel1
     );
 	 
@@ -144,8 +130,6 @@ begin
     port map
     (
         clk             => CLOCK_50,
-		  hab 				=> SW(1),
-		  clear 				=> sig_clear,
         saida_clk       => saidaVel2
     );
 	 
@@ -155,65 +139,74 @@ begin
 		 A => saidaVel1,
        B => saidaVel2,		 
 		 sel => SW(17),
-		 X => saidaClock
+		 X => saidaMUXClock
 	 );
-	 --LEDR(17) <= saidaClock;
+	 
+	 
+	 tf: entity work.fliflopRESET
+	 port map
+	 (
+		d => "0001",
+		clk => saidaMUXClock,
+		reset => sig_clear,
+      saida_clk => saidaClock
+	 );	 
 	 
 	 
     -- Instanciação de cada Display
     DISPLAY0 : entity work.conversorHex7SegDisplay 
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
-        habilita    =>  '1',-- habilitaDisplay(0),
-        saida7seg   => HEX0
+        habilita    => habilitaDisplay(0),
+        saida7seg   => HEX2
     );
 
     -- Instanciação de cada Display
     DISPLAY1 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
         habilita    =>  habilitaDisplay(1),
-        saida7seg   => HEX1
+        saida7seg   => HEX3
     );
     -- Instanciação de cada Display
     DISPLAY2 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
         habilita    =>  habilitaDisplay(2),
-        saida7seg   => HEX2
+        saida7seg   => HEX4
     );
     -- Instanciação de cada Display
     DISPLAY3 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
         habilita    =>  habilitaDisplay(3),
-        saida7seg   => HEX3
+        saida7seg   => HEX5
     );
     -- Instanciação de cada Display
     DISPLAY4 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
         habilita    =>  habilitaDisplay(4),
-        saida7seg   => HEX4
+        saida7seg   => HEX6
     );
     -- Instanciação de cada Display
     DISPLAY5 : entity work.conversorHex7SegDisplay  
     port map
     (
-        clk         => testeCLOCK,
+        clk         => CLOCK_50,
         dadoHex     => saidaULA, -- que veio da ULA
         habilita    =>  habilitaDisplay(5),
-        saida7seg   => HEX5
+        saida7seg   => HEX7
     );
     -- Instanciação de cada Display
     DISPLAY6 : entity work.conversorHex7SegDisplay  
@@ -222,7 +215,7 @@ begin
         clk         => CLOCK_50,
         dadoHex     => "0000", 
         habilita    => '1',
-        saida7seg   => HEX6
+        saida7seg   => HEX1
     );    -- Instanciação de cada Display
     DISPLAY7 : entity work.conversorHex7SegDisplay  
     port map
@@ -230,7 +223,7 @@ begin
         clk         => CLOCK_50,
         dadoHex     => "0000",
         habilita    => '1',
-        saida7seg   => HEX7
+        saida7seg   => HEX0
     );
 --    -- Instanciação das Chaves
 --    IO : entity work.io 

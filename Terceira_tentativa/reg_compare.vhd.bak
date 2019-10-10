@@ -20,6 +20,7 @@ begin
 			B <= A;
 		end if;
 		
+		
 	end process;
 	
 end architecture;

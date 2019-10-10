@@ -12,7 +12,7 @@ entity muxVel is
 		 
 		 sel : in std_logic;
 		 
-		 X : out std_logic_vector(3 downto 0)
+		 X : out std_logic
     );
 end entity;
 
@@ -23,7 +23,7 @@ architecture Arc of muxVel is
 begin
   
 	
-	X <= "000" & A when sel = '0' else
-		  "000" & B when sel = '1';
+	X <= A when sel = '0' else
+		   B when sel = '1';
 	 
 end architecture;

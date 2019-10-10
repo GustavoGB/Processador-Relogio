@@ -22,7 +22,9 @@ entity UC is
 		Mux_entradaULA: out std_logic; -- 0=out I/O; 1=Imediato
 		Habilita_IO: out std_logic;
 		ReadEnableDisplay: out std_logic;
-		Mux_Jump: out std_logic
+		Mux_Jump: out std_logic;
+		HabCmp : out std_logic
+		
 	);
 end UC;
 
@@ -46,18 +48,17 @@ begin
 	
 	Habilita_BancoRegistradores <= '1' when (opcode = movr) or (opcode = loadio) or (opcode = add) else '0';
 	
-	
+	HabCmp <= '1' when opcode = cmp;
 	
 	ULA_func <= "000" when (opcode = add) else
 		"001" when (opcode = sub) else
-		"010" when (opcode = loadio) else--Retorna entrada A quando loadio
 		"011" when (opcode = movd) else
 		"100" when (opcode = cmp) else
-		"010" when (opcode = movr) else "111"; --Sempre movemos o imediato para o banco, Retorna a entrada A quando movr
+		"010" when ((opcode = movr) or (opcode = loadio)) else "111"; --Sempre movemos o imediato para o banco, Retorna a entrada A quando movr
 
 	Habilita_IO <= '1' when (opcode = movd) else '0';
 
-	ReadEnableDisplay <= '1' when (opcode = loadio) else '0';
+	ReadEnableDisplay <= '1' when (opcode = loadio) or (opcode = movd) else '0';
 
 	Mux_entradaULA <= '1' when (opcode = add) or (opcode = movr) or (opcode = cmp) else '0';
 		

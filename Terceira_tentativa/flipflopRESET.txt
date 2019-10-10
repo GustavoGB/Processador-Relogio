@@ -1,0 +1,49 @@
+LIBRARY ieee;
+   USE ieee.std_logic_1164.ALL;
+   use ieee.numeric_std.all;
+
+   entity divisorGenerico2 is
+    generic
+    (divisor : natural:=  1000000);
+       port(
+           clk, reset      :   in std_logic;
+			  --clear : in std_logic;
+           saida_clk :   out std_logic
+           );
+   end entity;	
+	
+
+process (clk)
+begin
+	-- Reset whenever the reset signal goes low, regardless of the clock
+	if (reset = '0') then
+		saida_clk <= '0';
+	-- If not resetting, update the register output on the clock's rising edge
+	elsif (rising_edge(clk)) then
+		saida_clk <= '1';
+	end if;
+end process;
+
+	
+-- architecture divInteiro of divisorGenerico2 is
+--        signal tick : std_logic := '0';
+--        signal contador : integer range 0 to divisor+1 := 0;
+--   begin
+--        process(clk)
+--        begin
+--            if rising_edge(clk) then
+--					if hab = '1' then
+--						if contador >= divisor then
+--							  contador <= 0;
+--							  tick <= '1';
+--						 else
+--								tick <= '0';
+--							  contador <= contador + 1;
+--						 end if;
+--					else
+--						contador <= 0;
+--					end if;
+--            end if;
+--        end process;
+--    saida_clk <= tick;
+--    end architecture divInteiro;

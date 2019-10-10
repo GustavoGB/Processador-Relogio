@@ -30,6 +30,8 @@ signal saidaULA: std_logic_vector(3 downto 0);
 signal saidaPC: std_logic_vector(7 downto 0);
 signal saidaMuxULA : std_logic_vector(3 downto 0);
 signal saidaBancoReg : std_logic_vector(3 downto 0);
+signal sig_compare : std_logic_vector(2 downto 0);
+signal sig_habCmp : std_logic;
 begin
 
 	Somador: entity work.somador
@@ -60,14 +62,15 @@ begin
     UC : entity work.UC 
     port map
     (
-		igual => sig_equal,
+		igual => sig_compare,
 		opcode => Opcode,
 		ULA_func => sig_ULA_func,
 		Habilita_BancoRegistradores => habilitaBanco,
 		Mux_entradaULA => Mux_entradaULA,
 		Habilita_IO => WriteIO,
 		ReadEnableDisplay => ReadIO,
-		Mux_Jump => mux_jump
+		Mux_Jump => mux_jump,
+		HabCmp => sig_habCmp
     );
 	
 	 Mux_entrada_ULA: entity work.muxULA
@@ -97,6 +100,15 @@ begin
 		C => saidaULA,
 		-- Flag
 		equal => sig_equal
+    );
+		
+	REG_IG: entity work.reg_compare
+	 port map 
+    (
+       A => sig_equal,
+		 Clock => CLK,
+		 habilita => sig_habCmp,
+		 B	=> sig_compare
     );
 	 
 

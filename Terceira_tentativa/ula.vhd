@@ -46,15 +46,18 @@ architecture Arch of ula is
 	--Compara se as entradas sao iguais
 	constant Cmp : std_logic_vector(2 downto 0) := "100";
 	
+	signal clock_gambiarra : std_logic;
+	
 begin
-	set_igual <= "001" when (to_integer(unsigned(A AND B)) > 0) else
+
+	set_igual <= "001" when (std_logic_vector(unsigned(B) - unsigned(A)) = "0000") else
 		"000";
 	
 	C <= std_logic_vector(unsigned(A) + unsigned(B)) when (func = Add) else
-		std_logic_vector(unsigned(A) - unsigned(b)) when (func = Sub) else
+		std_logic_vector(unsigned(A) - unsigned(B)) when (func = Sub) else
 		B when (func = RetB) else
 		A when (func = RetA) else "0000";
 	
-	equal <= set_igual when (func = Cmp) else "100";	  
+	equal <= set_igual;	  
 
 end Arch;
