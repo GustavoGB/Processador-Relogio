@@ -7,10 +7,11 @@ entity muxVel is
 	
    port
     (
-         A : in std_logic;
+       A : in std_logic;
 		 B : in std_logic;
-		 
-		 sel : in std_logic;
+       C : in std_logic;
+		 D : in std_logic;		 
+		 sel : in std_logic_Vector(1 downto 0);
 		 
 		 X : out std_logic
     );
@@ -23,7 +24,9 @@ architecture Arc of muxVel is
 begin
   
 	
-	X <= A when sel = '0' else
-		   B when sel = '1';
+	X <= A when sel = "00" else
+		   B when sel = "01" else
+			C when sel = "10" else
+			D when sel = "11";
 	 
 end architecture;

@@ -40,6 +40,8 @@ architecture estrutural of Relogio is
     signal saidaIO   : STD_LOGIC_VECTOR(larguraBarramentoDados-1 DOWNTO 0);
 	 signal saidaVel1 : std_logic;
 	 signal saidaVel2 : std_logic;
+	 signal saidaVel3 : std_logic;
+	 signal saidaVel4 : std_logic;
 
     -- Sinais de controle RD/WR
     signal readEnableDisplay               : STD_LOGIC;
@@ -107,7 +109,7 @@ begin
 		CLK => CLOCK_50,
 		Endereco => sig_instrucao(7 downto 0),
 		Opcode => sig_instrucao(11 downto 8),
-		DataIO => saidaClock,
+		DataIO => saidaIO,
 		DataOut => saidaULA,
 		ReadIO => readEnableDisplay,
 		WriteIO => writeEnableDisplay,
@@ -133,23 +135,44 @@ begin
         saida_clk       => saidaVel2
     );
 	 
+    -- Instanciação do componente Divisor Genérico
+        -- Componente da composição da Base de Tempo
+    BASE_TEMPO4 : entity work.divisorGenerico3 
+    port map
+    (
+        clk             => CLOCK_50,
+        saida_clk       => saidaVel3
+    );
+	 
+    -- Instanciação do componente Divisor Genérico
+        -- Componente da composição da Base de Tempo
+    BASE_TEMPO5 : entity work.divisorGenerico4 
+    port map
+    (
+        clk             => CLOCK_50,
+        saida_clk       => saidaVel4
+    );
+	 
 	 Mux_Vel: entity work.muxVel
 	 port map
 	 (
 		 A => saidaVel1,
-       B => saidaVel2,		 
-		 sel => SW(17),
+       B => saidaVel2,
+       C => saidaVel3,
+       D => saidaVel4,
+		 sel => SW(17 downto 16), 
 		 X => saidaMUXClock
 	 );
-	 
+	  
 	 
 	 tf: entity work.fliflopRESET
 	 port map
 	 (
-		d => "0001",
+		d => "001",
 		clk => saidaMUXClock,
 		reset => sig_clear,
-      saida_clk => saidaClock
+		ampm => SW(15),
+      saida_clk => saidaIO
 	 );	 
 	 
 	 
@@ -213,28 +236,17 @@ begin
     port map
     (
         clk         => CLOCK_50,
-        dadoHex     => "0000", 
-        habilita    => '1',
-        saida7seg   => HEX1
+        dadoHex     => saidaULA, 
+        habilita    => habilitaDisplay(6),
+        saida7seg   => HEX0
     );    -- Instanciação de cada Display
     DISPLAY7 : entity work.conversorHex7SegDisplay  
     port map
     (
         clk         => CLOCK_50,
-        dadoHex     => "0000",
+        dadoHex     => "1111",
         habilita    => '1',
-        saida7seg   => HEX0
+        saida7seg   => HEX1
     );
---    -- Instanciação das Chaves
---    IO : entity work.io 
---    port map
---    (
---        entradaChaves   => SW(1 DOWNTO 0),
---		  entradaBaseTempo => saidaClock,
---		  habilitaBaseTempo => habilitaBaseTempo,
---        --habilitaChaves        => habChaves,
---		  --Vel => ,
---        saida           => saidaIO
---    );
 	 
 end architecture;

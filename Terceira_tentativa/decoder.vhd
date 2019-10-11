@@ -27,8 +27,8 @@ begin
 		eseg73 <= '1' when (endereco = "0011" AND writeEnable = '1') else '0';
 		eseg74 <= '1' when (endereco = "0100" AND writeEnable = '1') else '0';
 		eseg75 <= '1' when (endereco = "0101" AND writeEnable = '1') else '0';
-		eseg76 <= '1' when (endereco = "1111" AND writeEnable = '1') else '0'; --Não estamos usando
-		eseg77 <= '1' when (endereco = "1111" AND writeEnable = '1') else '0'; --Não estamos usando
+		eseg76 <= '1' when (endereco = "1100" AND writeEnable = '1') else '0'; --Não estamos usando
+		eseg77 <= '1' when (endereco = "1101" AND writeEnable = '1') else '0'; --Não estamos usando
 		esw    <= '1' when ((endereco = "1000" AND readEnable = '1') or (endereco = "1001" AND readEnable = '1')) else '0';
 		ebt <= '1'    when (endereco = "0110" AND readEnable = '1') else '0';
 		clear <= '1' when (endereco = "0111" AND readEnable = '1') else '0';

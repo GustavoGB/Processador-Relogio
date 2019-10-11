@@ -4,7 +4,7 @@ LIBRARY ieee;
 
    entity divisorGenerico2 is
     generic
-    (divisor : natural:=  10000);
+    (divisor : natural:=  1000000);
        port(
            clk      :   in std_logic;
            saida_clk :   out std_logic

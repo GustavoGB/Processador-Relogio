@@ -3,75 +3,111 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
-Slack : -11.852
-TNS   : -1215.639
+Slack : -14.280
+TNS   : -1687.167
+
+Type  : Slow 1200mV 85C Model Setup 'SW[16]'
+Slack : -4.775
+TNS   : -4.775
 
 Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
-Slack : 0.414
+Slack : 0.586
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Recovery 'SW[17]'
-Slack : -1.289
-TNS   : -1.289
+Type  : Slow 1200mV 85C Model Hold 'SW[16]'
+Slack : 1.933
+TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Removal 'SW[17]'
-Slack : 0.741
+Type  : Slow 1200mV 85C Model Recovery 'SW[16]'
+Slack : -9.830
+TNS   : -19.660
+
+Type  : Slow 1200mV 85C Model Removal 'SW[16]'
+Slack : 2.444
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -215.025
+TNS   : -274.135
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SW[17]'
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SW[16]'
 Slack : -3.000
-TNS   : -4.285
+TNS   : -5.570
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Processador:PR|pc:PC|instrucao[0]~_Duplicate_1'
+Slack : -2.102
+TNS   : -98.471
 
 Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -10.804
-TNS   : -1100.407
+Slack : -12.952
+TNS   : -1528.509
+
+Type  : Slow 1200mV 0C Model Setup 'SW[16]'
+Slack : -4.311
+TNS   : -4.311
 
 Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.375
+Slack : 0.542
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Recovery 'SW[17]'
-Slack : -0.971
-TNS   : -0.971
+Type  : Slow 1200mV 0C Model Hold 'SW[16]'
+Slack : 1.507
+TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Removal 'SW[17]'
-Slack : 0.524
+Type  : Slow 1200mV 0C Model Recovery 'SW[16]'
+Slack : -8.942
+TNS   : -17.884
+
+Type  : Slow 1200mV 0C Model Removal 'SW[16]'
+Slack : 2.009
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -215.025
+TNS   : -274.135
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SW[17]'
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SW[16]'
 Slack : -3.000
-TNS   : -4.285
+TNS   : -5.570
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Processador:PR|pc:PC|instrucao[0]~_Duplicate_1'
+Slack : -1.838
+TNS   : -82.009
 
 Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
-Slack : -5.429
-TNS   : -521.960
+Slack : -6.883
+TNS   : -749.974
+
+Type  : Fast 1200mV 0C Model Setup 'SW[16]'
+Slack : -2.595
+TNS   : -2.595
 
 Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
-Slack : 0.073
+Slack : 0.201
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Recovery 'SW[17]'
-Slack : -0.313
-TNS   : -0.313
+Type  : Fast 1200mV 0C Model Hold 'SW[16]'
+Slack : 0.917
+TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Removal 'SW[17]'
-Slack : 0.476
+Type  : Fast 1200mV 0C Model Recovery 'SW[16]'
+Slack : -5.144
+TNS   : -10.288
+
+Type  : Fast 1200mV 0C Model Removal 'SW[16]'
+Slack : 1.185
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
 Slack : -3.000
-TNS   : -216.801
+TNS   : -271.176
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SW[17]'
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SW[16]'
 Slack : -3.000
-TNS   : -4.384
+TNS   : -7.679
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Processador:PR|pc:PC|instrucao[0]~_Duplicate_1'
+Slack : -0.983
+TNS   : -22.887
 
 ------------------------------------------------------------

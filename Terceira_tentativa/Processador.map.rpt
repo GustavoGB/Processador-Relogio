@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Processador
-Thu Oct 10 19:01:58 2019
+Thu Oct 10 22:04:35 2019
 Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
 
 
@@ -28,14 +28,15 @@ Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
  20. Parameter Settings for User Entity Instance: Processador:PR|ula:ULA
  21. Parameter Settings for User Entity Instance: divisorGenerico:BASE_TEMPO2
  22. Parameter Settings for User Entity Instance: divisorGenerico2:BASE_TEMPO3
- 23. Parameter Settings for User Entity Instance: fliflopRESET:tf
- 24. Port Connectivity Checks: "conversorHex7SegDisplay:DISPLAY7"
- 25. Port Connectivity Checks: "conversorHex7SegDisplay:DISPLAY6"
- 26. Port Connectivity Checks: "fliflopRESET:tf"
- 27. Port Connectivity Checks: "decoder:DE"
- 28. Post-Synthesis Netlist Statistics for Top Partition
- 29. Elapsed Time Per Partition
- 30. Analysis & Synthesis Messages
+ 23. Parameter Settings for User Entity Instance: divisorGenerico3:BASE_TEMPO4
+ 24. Parameter Settings for User Entity Instance: divisorGenerico4:BASE_TEMPO5
+ 25. Parameter Settings for User Entity Instance: fliflopRESET:tf
+ 26. Port Connectivity Checks: "conversorHex7SegDisplay:DISPLAY7"
+ 27. Port Connectivity Checks: "fliflopRESET:tf"
+ 28. Port Connectivity Checks: "decoder:DE"
+ 29. Post-Synthesis Netlist Statistics for Top Partition
+ 30. Elapsed Time Per Partition
+ 31. Analysis & Synthesis Messages
 
 
 
@@ -61,15 +62,15 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Oct 10 19:01:58 2019       ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 10 22:04:35 2019       ;
 ; Quartus Prime Version              ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
 ; Revision Name                      ; Processador                                 ;
 ; Top-level Entity Name              ; Relogio                                     ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 398                                         ;
-;     Total combinational functions  ; 322                                         ;
-;     Dedicated logic registers      ; 158                                         ;
-; Total registers                    ; 158                                         ;
+; Total logic elements               ; 558                                         ;
+;     Total combinational functions  ; 491                                         ;
+;     Dedicated logic registers      ; 205                                         ;
+; Total registers                    ; 205                                         ;
 ; Total pins                         ; 101                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 0                                           ;
@@ -204,6 +205,8 @@ refer to the applicable agreement for further details.
 ; Processador.vhd                  ; yes             ; User VHDL File  ; C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd             ;         ;
 ; reg_compare.vhd                  ; yes             ; User VHDL File  ; C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/reg_compare.vhd             ;         ;
 ; flipflopRESET.vhd                ; yes             ; User VHDL File  ; C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd           ;         ;
+; divisorGenerico3.vhd             ; yes             ; User VHDL File  ; C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico3.vhd        ;         ;
+; divisorGenerico4.vhd             ; yes             ; User VHDL File  ; C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico4.vhd        ;         ;
 +----------------------------------+-----------------+-----------------+----------------------------------------------------------------------------------------------------+---------+
 
 
@@ -212,20 +215,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimated Total logic elements              ; 398            ;
+; Estimated Total logic elements              ; 558            ;
 ;                                             ;                ;
-; Total combinational functions               ; 322            ;
+; Total combinational functions               ; 491            ;
 ; Logic element usage by number of LUT inputs ;                ;
-;     -- 4 input functions                    ; 216            ;
-;     -- 3 input functions                    ; 47             ;
-;     -- <=2 input functions                  ; 59             ;
+;     -- 4 input functions                    ; 340            ;
+;     -- 3 input functions                    ; 33             ;
+;     -- <=2 input functions                  ; 118            ;
 ;                                             ;                ;
 ; Logic elements by mode                      ;                ;
-;     -- normal mode                          ; 270            ;
-;     -- arithmetic mode                      ; 52             ;
+;     -- normal mode                          ; 404            ;
+;     -- arithmetic mode                      ; 87             ;
 ;                                             ;                ;
-; Total registers                             ; 158            ;
-;     -- Dedicated logic registers            ; 158            ;
+; Total registers                             ; 205            ;
+;     -- Dedicated logic registers            ; 205            ;
 ;     -- I/O registers                        ; 0              ;
 ;                                             ;                ;
 ; I/O pins                                    ; 101            ;
@@ -233,9 +236,9 @@ refer to the applicable agreement for further details.
 ; Embedded Multiplier 9-bit elements          ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 157            ;
-; Total fan-out                               ; 1761           ;
-; Average fan-out                             ; 2.58           ;
+; Maximum fan-out                             ; 203            ;
+; Total fan-out                               ; 2465           ;
+; Average fan-out                             ; 2.74           ;
 +---------------------------------------------+----------------+
 
 
@@ -244,26 +247,29 @@ refer to the applicable agreement for further details.
 +---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------+-------------------------+--------------+
 ; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                             ; Entity Name             ; Library Name ;
 +---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------+-------------------------+--------------+
-; |Relogio                              ; 322 (0)             ; 158 (0)                   ; 0           ; 0            ; 0       ; 0         ; 101  ; 0            ; |Relogio                                        ; Relogio                 ; work         ;
-;    |Processador:PR|                   ; 124 (0)             ; 73 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR                         ; Processador             ; work         ;
-;       |BancodeRegistradores:BR|       ; 73 (73)             ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|BancodeRegistradores:BR ; BancodeRegistradores    ; work         ;
-;       |UC:UC|                         ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|UC:UC                   ; UC                      ; work         ;
-;       |muxULA:Mux_entrada_ULA|        ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|muxULA:Mux_entrada_ULA  ; muxULA                  ; work         ;
+; |Relogio                              ; 491 (0)             ; 205 (0)                   ; 0           ; 0            ; 0       ; 0         ; 101  ; 0            ; |Relogio                                        ; Relogio                 ; work         ;
+;    |Processador:PR|                   ; 115 (0)             ; 73 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR                         ; Processador             ; work         ;
+;       |BancodeRegistradores:BR|       ; 72 (72)             ; 64 (64)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|BancodeRegistradores:BR ; BancodeRegistradores    ; work         ;
+;       |UC:UC|                         ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|UC:UC                   ; UC                      ; work         ;
+;       |muxULA:Mux_entrada_ULA|        ; 4 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|muxULA:Mux_entrada_ULA  ; muxULA                  ; work         ;
 ;       |pc:PC|                         ; 8 (8)               ; 8 (8)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|pc:PC                   ; pc                      ; work         ;
 ;       |reg_compare:REG_IG|            ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|reg_compare:REG_IG      ; reg_compare             ; work         ;
 ;       |ula:ULA|                       ; 25 (25)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|Processador:PR|ula:ULA                 ; ula                     ; work         ;
-;    |conversorHex7SegDisplay:DISPLAY0| ; 26 (26)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY0       ; conversorHex7SegDisplay ; work         ;
+;    |conversorHex7SegDisplay:DISPLAY0| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY0       ; conversorHex7SegDisplay ; work         ;
 ;    |conversorHex7SegDisplay:DISPLAY1| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY1       ; conversorHex7SegDisplay ; work         ;
 ;    |conversorHex7SegDisplay:DISPLAY2| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY2       ; conversorHex7SegDisplay ; work         ;
 ;    |conversorHex7SegDisplay:DISPLAY3| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY3       ; conversorHex7SegDisplay ; work         ;
 ;    |conversorHex7SegDisplay:DISPLAY4| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY4       ; conversorHex7SegDisplay ; work         ;
 ;    |conversorHex7SegDisplay:DISPLAY5| ; 7 (7)               ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY5       ; conversorHex7SegDisplay ; work         ;
-;    |decoder:DE|                       ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|decoder:DE                             ; decoder                 ; work         ;
-;    |divisorGenerico2:BASE_TEMPO3|     ; 17 (17)             ; 15 (15)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|divisorGenerico2:BASE_TEMPO3           ; divisorGenerico2        ; work         ;
+;    |conversorHex7SegDisplay:DISPLAY6| ; 17 (17)             ; 7 (7)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|conversorHex7SegDisplay:DISPLAY6       ; conversorHex7SegDisplay ; work         ;
+;    |decoder:DE|                       ; 13 (13)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|decoder:DE                             ; decoder                 ; work         ;
+;    |divisorGenerico2:BASE_TEMPO3|     ; 25 (25)             ; 21 (21)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|divisorGenerico2:BASE_TEMPO3           ; divisorGenerico2        ; work         ;
+;    |divisorGenerico3:BASE_TEMPO4|     ; 21 (21)             ; 18 (18)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|divisorGenerico3:BASE_TEMPO4           ; divisorGenerico3        ; work         ;
+;    |divisorGenerico4:BASE_TEMPO5|     ; 17 (17)             ; 15 (15)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|divisorGenerico4:BASE_TEMPO5           ; divisorGenerico4        ; work         ;
 ;    |divisorGenerico:BASE_TEMPO2|      ; 32 (32)             ; 27 (27)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|divisorGenerico:BASE_TEMPO2            ; divisorGenerico         ; work         ;
-;    |fliflopRESET:tf|                  ; 0 (0)               ; 1 (1)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|fliflopRESET:tf                        ; fliflopRESET            ; work         ;
-;    |muxVel:Mux_Vel|                   ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|muxVel:Mux_Vel                         ; muxVel                  ; work         ;
-;    |rom:ROM|                          ; 76 (76)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|rom:ROM                                ; rom                     ; work         ;
+;    |fliflopRESET:tf|                  ; 3 (3)               ; 2 (2)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|fliflopRESET:tf                        ; fliflopRESET            ; work         ;
+;    |muxVel:Mux_Vel|                   ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|muxVel:Mux_Vel                         ; muxVel                  ; work         ;
+;    |rom:ROM|                          ; 204 (204)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Relogio|rom:ROM                                ; rom                     ; work         ;
 +---------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------+-------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -273,13 +279,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------+----------------------------------------+
 ; Register name                                    ; Reason for Removal                     ;
 +--------------------------------------------------+----------------------------------------+
-; fliflopRESET:tf|saida_clk[1..3]                  ; Stuck at GND due to stuck port data_in ;
+; fliflopRESET:tf|saida_clk[1,2]                   ; Stuck at GND due to stuck port data_in ;
 ; Processador:PR|reg_compare:REG_IG|B[1,2]         ; Stuck at GND due to stuck port data_in ;
-; conversorHex7SegDisplay:DISPLAY7|saida7seg[6]    ; Stuck at VCC due to stuck port data_in ;
-; conversorHex7SegDisplay:DISPLAY6|saida7seg[6]    ; Stuck at VCC due to stuck port data_in ;
-; conversorHex7SegDisplay:DISPLAY7|saida7seg[0..5] ; Stuck at GND due to stuck port data_in ;
-; conversorHex7SegDisplay:DISPLAY6|saida7seg[0..5] ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 19           ;                                        ;
+; conversorHex7SegDisplay:DISPLAY7|saida7seg[0..6] ; Stuck at VCC due to stuck port data_in ;
+; Total Number of Removed Registers = 11           ;                                        ;
 +--------------------------------------------------+----------------------------------------+
 
 
@@ -288,12 +291,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 158   ;
-; Number of registers using Synchronous Clear  ; 40    ;
-; Number of registers using Synchronous Load   ; 14    ;
-; Number of registers using Asynchronous Clear ; 1     ;
+; Total registers                              ; 205   ;
+; Number of registers using Synchronous Clear  ; 77    ;
+; Number of registers using Synchronous Load   ; 8     ;
+; Number of registers using Asynchronous Clear ; 2     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 106   ;
+; Number of registers using Clock Enable       ; 113   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -303,14 +306,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY0|saida7seg[6] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY1|saida7seg[4] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY2|saida7seg[4] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY3|saida7seg[6] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY4|saida7seg[6] ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY5|saida7seg[6] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Relogio|Processador:PR|ula:ULA|C[1]                   ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Relogio|Processador:PR|UC:UC|ULA_func[0]              ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY6|saida7seg[5] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY0|saida7seg[5] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY1|saida7seg[0] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY2|saida7seg[5] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY3|saida7seg[0] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY4|saida7seg[5] ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY5|saida7seg[5] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY6|saida7seg[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY0|saida7seg[4] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY1|saida7seg[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY2|saida7seg[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY3|saida7seg[3] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY4|saida7seg[4] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |Relogio|conversorHex7SegDisplay:DISPLAY5|saida7seg[4] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |Relogio|Processador:PR|ula:ULA|C[0]                   ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |Relogio|Processador:PR|UC:UC|ULA_func[2]              ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 
 
@@ -435,6 +446,26 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +---------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: divisorGenerico2:BASE_TEMPO3 ;
++----------------+---------+------------------------------------------------+
+; Parameter Name ; Value   ; Type                                           ;
++----------------+---------+------------------------------------------------+
+; divisor        ; 1000000 ; Signed Integer                                 ;
++----------------+---------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divisorGenerico3:BASE_TEMPO4 ;
++----------------+--------+-------------------------------------------------+
+; Parameter Name ; Value  ; Type                                            ;
++----------------+--------+-------------------------------------------------+
+; divisor        ; 100000 ; Signed Integer                                  ;
++----------------+--------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divisorGenerico4:BASE_TEMPO5 ;
 +----------------+-------+--------------------------------------------------+
 ; Parameter Name ; Value ; Type                                             ;
 +----------------+-------+--------------------------------------------------+
@@ -458,17 +489,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------+-------+----------+--------------------------------+
 ; Port     ; Type  ; Severity ; Details                        ;
 +----------+-------+----------+--------------------------------+
-; dadohex  ; Input ; Info     ; Stuck at GND                   ;
-; habilita ; Input ; Info     ; Stuck at VCC                   ;
-+----------+-------+----------+--------------------------------+
-
-
-+--------------------------------------------------------------+
-; Port Connectivity Checks: "conversorHex7SegDisplay:DISPLAY6" ;
-+----------+-------+----------+--------------------------------+
-; Port     ; Type  ; Severity ; Details                        ;
-+----------+-------+----------+--------------------------------+
-; dadohex  ; Input ; Info     ; Stuck at GND                   ;
+; dadohex  ; Input ; Info     ; Stuck at VCC                   ;
 ; habilita ; Input ; Info     ; Stuck at VCC                   ;
 +----------+-------+----------+--------------------------------+
 
@@ -478,8 +499,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+-------+----------+----------------+
 ; Port    ; Type  ; Severity ; Details        ;
 +---------+-------+----------+----------------+
-; d[0..2] ; Input ; Info     ; Stuck at GND   ;
-; d[3]    ; Input ; Info     ; Stuck at VCC   ;
+; d[0..1] ; Input ; Info     ; Stuck at GND   ;
+; d[2]    ; Input ; Info     ; Stuck at VCC   ;
 +---------+-------+----------+----------------+
 
 
@@ -488,7 +509,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port   ; Type   ; Severity ; Details                                                                             ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
-; eseg76 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; eseg77 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; esw    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; ebt    ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
@@ -501,26 +521,25 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
 ; boundary_port         ; 101                         ;
-; cycloneiii_ff         ; 158                         ;
-;     CLR               ; 1                           ;
-;     ENA               ; 100                         ;
-;     ENA SLD           ; 6                           ;
-;     SCLR              ; 40                          ;
+; cycloneiii_ff         ; 205                         ;
+;     CLR               ; 2                           ;
+;     ENA               ; 113                         ;
+;     SCLR              ; 77                          ;
 ;     SLD               ; 8                           ;
-;     plain             ; 3                           ;
-; cycloneiii_lcell_comb ; 324                         ;
-;     arith             ; 52                          ;
-;         2 data inputs ; 46                          ;
+;     plain             ; 5                           ;
+; cycloneiii_lcell_comb ; 493                         ;
+;     arith             ; 87                          ;
+;         2 data inputs ; 81                          ;
 ;         3 data inputs ; 6                           ;
-;     normal            ; 272                         ;
+;     normal            ; 406                         ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 3                           ;
-;         2 data inputs ; 10                          ;
-;         3 data inputs ; 41                          ;
-;         4 data inputs ; 216                         ;
+;         1 data inputs ; 5                           ;
+;         2 data inputs ; 32                          ;
+;         3 data inputs ; 27                          ;
+;         4 data inputs ; 340                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 15.10                       ;
-; Average LUT depth     ; 8.14                        ;
+; Max LUT depth         ; 14.30                       ;
+; Average LUT depth     ; 7.82                        ;
 +-----------------------+-----------------------------+
 
 
@@ -529,7 +548,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -539,7 +558,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
-    Info: Processing started: Thu Oct 10 19:01:42 2019
+    Info: Processing started: Thu Oct 10 22:04:17 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processador -c Processador
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -593,7 +612,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file divisor
     Info (12022): Found design unit 1: divisorGenerico2-divInteiro File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico2.vhd Line: 14
     Info (12023): Found entity 1: divisorGenerico2 File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico2.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file muxvel.vhd
-    Info (12022): Found design unit 1: muxVel-Arc File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 19
+    Info (12022): Found design unit 1: muxVel-Arc File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 20
     Info (12023): Found entity 1: muxVel File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file processador.vhd
     Info (12022): Found design unit 1: Processador-Arch File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 21
@@ -602,16 +621,25 @@ Info (12021): Found 2 design units, including 1 entities, in source file reg_com
     Info (12022): Found design unit 1: reg_compare-Arc File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/reg_compare.vhd Line: 14
     Info (12023): Found entity 1: reg_compare File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/reg_compare.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file flipflopreset.vhd
-    Info (12022): Found design unit 1: fliflopRESET-arc_fliflopRESET File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 16
+    Info (12022): Found design unit 1: fliflopRESET-arc_fliflopRESET File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 17
     Info (12023): Found entity 1: fliflopRESET File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file muxio.vhd
+    Info (12022): Found design unit 1: muxIO-Arc File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxIO.vhd Line: 22
+    Info (12023): Found entity 1: muxIO File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxIO.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file divisorgenerico3.vhd
+    Info (12022): Found design unit 1: divisorGenerico3-divInteiro File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico3.vhd Line: 14
+    Info (12023): Found entity 1: divisorGenerico3 File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico3.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file divisorgenerico4.vhd
+    Info (12022): Found design unit 1: divisorGenerico4-divInteiro File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico4.vhd Line: 14
+    Info (12023): Found entity 1: divisorGenerico4 File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/divisorGenerico4.vhd Line: 5
 Info (12127): Elaborating entity "Relogio" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at Relogio.vhd(23): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
-Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(52): object "habChaves" assigned a value but never read File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 52
-Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(53): object "habilitaBaseTempo" assigned a value but never read File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 53
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:DE" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 78
-Info (12128): Elaborating entity "rom" for hierarchy "rom:ROM" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 97
+Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(54): object "habChaves" assigned a value but never read File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 54
+Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(55): object "habilitaBaseTempo" assigned a value but never read File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 55
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:DE" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 80
+Info (12128): Elaborating entity "rom" for hierarchy "rom:ROM" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 99
 Warning (10541): VHDL Signal Declaration warning at rom.vhd(22): used implicit default value for signal "content" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/rom.vhd Line: 22
-Info (12128): Elaborating entity "Processador" for hierarchy "Processador:PR" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 104
+Info (12128): Elaborating entity "Processador" for hierarchy "Processador:PR" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 106
 Info (12128): Elaborating entity "somador" for hierarchy "Processador:PR|somador:Somador" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 37
 Info (12128): Elaborating entity "mux" for hierarchy "Processador:PR|mux:Mux2_Jump" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 44
 Info (12128): Elaborating entity "pc" for hierarchy "Processador:PR|pc:PC" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 53
@@ -622,20 +650,23 @@ Info (12128): Elaborating entity "BancodeRegistradores" for hierarchy "Processad
 Info (12128): Elaborating entity "ula" for hierarchy "Processador:PR|ula:ULA" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 94
 Info (12128): Elaborating entity "reg_compare" for hierarchy "Processador:PR|reg_compare:REG_IG" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Processador.vhd Line: 105
 Warning (10492): VHDL Process Statement warning at reg_compare.vhd(20): signal "habilita" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/reg_compare.vhd Line: 20
-Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico:BASE_TEMPO2" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 120
-Info (12128): Elaborating entity "divisorGenerico2" for hierarchy "divisorGenerico2:BASE_TEMPO3" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 129
-Info (12128): Elaborating entity "muxVel" for hierarchy "muxVel:Mux_Vel" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 136
-Info (10041): Inferred latch for "X" at muxVel.vhd(26) File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 26
-Info (12128): Elaborating entity "fliflopRESET" for hierarchy "fliflopRESET:tf" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 146
-Warning (10492): VHDL Process Statement warning at flipflopRESET.vhd(22): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 22
-Info (12128): Elaborating entity "conversorHex7SegDisplay" for hierarchy "conversorHex7SegDisplay:DISPLAY0" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 157
+Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico:BASE_TEMPO2" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 122
+Info (12128): Elaborating entity "divisorGenerico2" for hierarchy "divisorGenerico2:BASE_TEMPO3" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 131
+Info (12128): Elaborating entity "divisorGenerico3" for hierarchy "divisorGenerico3:BASE_TEMPO4" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 140
+Info (12128): Elaborating entity "divisorGenerico4" for hierarchy "divisorGenerico4:BASE_TEMPO5" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 149
+Info (12128): Elaborating entity "muxVel" for hierarchy "muxVel:Mux_Vel" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 156
+Info (10041): Inferred latch for "X" at muxVel.vhd(27) File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 27
+Info (12128): Elaborating entity "fliflopRESET" for hierarchy "fliflopRESET:tf" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 168
+Warning (10492): VHDL Process Statement warning at flipflopRESET.vhd(23): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 23
+Warning (10492): VHDL Process Statement warning at flipflopRESET.vhd(24): signal "ampm" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 24
+Info (12128): Elaborating entity "conversorHex7SegDisplay" for hierarchy "conversorHex7SegDisplay:DISPLAY0" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 180
+Warning (14026): LATCH primitive "muxVel:Mux_Vel|X" is permanently enabled File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 16
 Warning (19016): Clock multiplexers are found and protected
-    Warning (19017): Found clock multiplexer muxVel:Mux_Vel|X File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 15
+    Warning (19017): Found clock multiplexer muxVel:Mux_Vel|X~0 File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/muxVel.vhd Line: 16
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "Processador:PR|BancodeRegistradores:BR|registrador" is uninferred due to inappropriate RAM size File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/BancodeRegistradores.vhd Line: 33
-Warning (113028): 1 out of 64 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/init.mif Line: 1
-    Warning (113026): Memory Initialization File Address 63 is not initialized File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/init.mif Line: 1
-Critical Warning (127005): Memory depth (256) in the design file differs from memory depth (64) in the Memory Initialization File "C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/init.mif" -- setting initial value for remaining addresses to 0
+Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
+    Warning (13310): Register "fliflopRESET:tf|saida_clk[3]" is converted into an equivalent circuit using register "fliflopRESET:tf|saida_clk[3]~_emulated" and latch "fliflopRESET:tf|saida_clk[3]~1" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/flipflopRESET.vhd Line: 23
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
     Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
@@ -655,24 +686,17 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[15]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
     Warning (13410): Pin "LEDR[16]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
     Warning (13410): Pin "LEDR[17]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 23
-    Warning (13410): Pin "HEX0[0]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[1]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[2]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[3]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[4]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[5]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX0[6]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
-    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[0]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[1]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[2]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[3]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[4]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
+    Warning (13410): Pin "HEX1[5]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
     Warning (13410): Pin "HEX1[6]" is stuck at VCC File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 26
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 17 input pin(s) that do not drive logic
+Warning (21074): Design contains 15 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
     Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
     Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
@@ -688,16 +712,14 @@ Warning (21074): Design contains 17 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[12]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
     Warning (15610): No output dependent on input pin "SW[13]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
     Warning (15610): No output dependent on input pin "SW[14]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
-    Warning (15610): No output dependent on input pin "SW[15]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
-    Warning (15610): No output dependent on input pin "SW[16]" File: C:/Users/victo/Documents/GitHub/Processador-Relogio/Terceira_tentativa/Relogio.vhd Line: 20
-Info (21057): Implemented 508 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 668 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 19 input pins
     Info (21059): Implemented 82 output pins
-    Info (21061): Implemented 407 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 64 warnings
+    Info (21061): Implemented 567 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 56 warnings
     Info: Peak virtual memory: 4801 megabytes
-    Info: Processing ended: Thu Oct 10 19:01:58 2019
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Processing ended: Thu Oct 10 22:04:35 2019
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:33
 
 

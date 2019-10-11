@@ -44,11 +44,11 @@ begin
 											 "0000000" when dadoHex="1000" and habilita = '1' else ---8
 											 "0010000" when dadoHex="1001" and habilita = '1' else ---9
 											 "0001000" when dadoHex="1010" and habilita = '1' else ---A
-											 "0000011" when dadoHex="1011" and habilita = '1' else ---B
+											 "0001100" when dadoHex="1011" and habilita = '1' else ---P
 											 "1000110" when dadoHex="1100" and habilita = '1' else ---C
 											 "0100001" when dadoHex="1101" and habilita = '1' else ---D
 											 "0000110" when dadoHex="1110" and habilita = '1' else ---E
-											 "0001110" when dadoHex="1111" and habilita = '1' else ---F
+											 "1111111" when dadoHex="1111" and habilita = '1' else ---F
 											 "1111111"; -- Apaga todos segmentos.
 											 
 											 
