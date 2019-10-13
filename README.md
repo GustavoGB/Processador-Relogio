@@ -1,15 +1,15 @@
 # Processador-Relogio
 Design de Computadores sexto semestre. 
 
-Relatório Intermediário
+Relatório Final
 
-    Pseudocódigo do relógio;
+    Assembly do relógio;
 
     Total de instruções e sua sintaxe;
 
     Formato das instruções;
 
-    Modos de endereçamento utilizados;
+    Modos de endereçamento utilizados e mapa de memória.;
 
     Arquitetura do processador;
 
@@ -18,8 +18,6 @@ Relatório Intermediário
     Fluxo de dados para o processador, com uma explicação resumida do seu funcionamento;
 
     Listagem dos pontos de controle e sua utilização;
-
-    Mapa de memória. (Nossa arquitetura não possui RAM); 
 
 
 `` 1)Código em assembly está nos arquivos relogio2.s  ``
@@ -36,22 +34,25 @@ Relatório Intermediário
 	movr $0, %m2
 	movr $0, %h1
 	movr $0, %h2
+	movd $0, %s1
+	movd $1, %s2
+	movd $2, %m1
+	movd $3, %m2
+	movd $4, %h1
+	movd $5, %h2
+    movd $7, %btempo
+    movr $10, %chave1
 .CLOCK:
-    loadio $27, %chave1
-    loadio $28, %chave2
-    loadio $29, %chave3
-    loadio $25, %btempo
+    loadio $6, %btempo
 	cmp $1, %btempo 
-	jne .CLOCK 
-    movd $26, %btempo 
-    cmp $1, %chave1
-    je .CHAVE1
-    cmp $1, %chave2
-    je .CHAVE2
-    cmp $1, %chave3
-    je .CHAVE3
-    jmp .CHAVE0 
-.CHAVE0:
+	je .CLEAR
+	cmp $9, %btempo 
+	je .AMPM
+    jmp .CLOCK
+.CLEAR:
+    movd $7, %btempo 
+    movr $0, %chave1
+    movd $12, %chave1
 .SEGUNDOS:
     add $1, %s1
     cmp $10, %s1
@@ -79,14 +80,18 @@ Relatório Intermediário
 .H1:
     movr $0, %m2
     add $1, %h1
-    cmp $5, %h1
+    cmp $4, %h1
+    je .CHECK
+    cmp $10, %h1
     je .H2
+    jmp .DISPLAY
+.CHECK:
+    cmp $2, %h2
+    je .VOLTA
     jmp .DISPLAY
 .H2:
     movr $0, %h1
     add $1, %h2
-    cmp $3, %h2
-    je .VOLTA
     jmp .DISPLAY
 .VOLTA:
     movr $0, %s1
@@ -96,20 +101,164 @@ Relatório Intermediário
     movr $0, %h1
     movr $0, %h2
     jmp .DISPLAY
-.CHAVE1:
-    jmp .DISPLAY
-.CHAVE2:
-    jmp .DISPLAY
-.CHAVE3:
-    jmp .DISPLAY
 .DISPLAY:
-	movd $17, %s1
-	movd $18, %s2
-	movd $19, %m1
-	movd $20, %m2
-	movd $21, %h1
-	movd $22, %h2
+	movd $0, %s1
+	movd $1, %s2
+	movd $2, %m1
+	movd $3, %m2
+	movd $4, %h1
+	movd $5, %h2
     jmp .CLOCK
+.AMPM:
+.CLEAR2:
+    movd $7, %btempo
+.CORRECT:
+    cmp $1, %h2
+    je .CHECK3
+    cmp $2, %h2
+    je .CHECK4
+.SEGUNDOS2:
+    movd $12, %chave1
+    add $1, %s1
+    cmp $10, %s1
+    je .S22
+    jmp .DISPLAY2
+.S22:
+    movr $0, %s1
+    add $1, %s2
+    cmp $6, %s2
+    je .M12
+    jmp .DISPLAY2
+.M12:
+    movr $0, %s2
+    add $1, %m1
+    cmp $10, %m1
+    je .M22
+    jmp .DISPLAY2
+.M22:
+    movr $0, %m1
+    add $1, %m2
+    cmp $6, %m2
+    je .H12
+    jmp .DISPLAY2
+
+.H12:
+    movr $0, %m2
+    add $1, %h1
+    cmp $3, %h1
+    je .CHECK2
+    cmp $10, %h1
+    je .H22
+    jmp .DISPLAY2
+.CHECK2:
+    cmp $1, %h2
+    je .VOLTA2
+    jmp .DISPLAY2
+.H22:
+    movr $0, %h1
+    add $1, %h2
+    jmp .DISPLAY2
+.VOLTA2:
+    movr $0, %s1
+    movr $0, %s2
+    movr $0, %m1
+    movr $0, %m2
+    movr $1, %h1
+    movr $0, %h2
+    cmp $10, %chave1
+    je .TROCAP
+    movr $10, %chave1
+    movd $12, %chave1
+    jmp .DISPLAY2
+.TROCAP:
+    movr $11, %chave1
+    movd $12, %chave1
+    jmp .DISPLAY2
+.DISPLAY2:
+	movd $0, %s1
+	movd $1, %s2
+	movd $2, %m1
+	movd $3, %m2
+	movd $4, %h1
+	movd $5, %h2
+    jmp .CLOCK
+.CHECK3:
+    cmp $3, %h1
+    je .L13
+    cmp $4, %h1
+    je .L14
+    cmp $5, %h1
+    je .L15
+    cmp $6, %h1
+    je .L16
+    cmp $7, %h1
+    je .L17
+    cmp $8, %h1
+    je .L18
+    cmp $9, %h1
+    je .L19
+    jmp .SEGUNDOS2
+.CHECK4:
+    cmp $0, %h1
+    je .L20
+    cmp $1, %h1
+    je .L21
+    cmp $2, %h1
+    je .L22
+    cmp $3, %h1
+    je .L23
+    cmp $4, %h1
+    je .L24
+    jmp .SEGUNDOS2
+.L13:
+    movr $0, %h2
+    movr $1, %h1
+    jmp .SEGUNDOS2
+.L14:
+    movr $0, %h2
+    movr $2, %h1
+    jmp .SEGUNDOS2
+.L15:
+    movr $0, %h2
+    movr $3, %h1
+    jmp .SEGUNDOS2
+.L16:
+    movr $0, %h2
+    movr $4, %h1
+    jmp .SEGUNDOS2
+.L17:
+    movr $0, %h2
+    movr $5, %h1
+    jmp .SEGUNDOS2
+.L18:
+    movr $0, %h2
+    movr $6, %h1
+    jmp .SEGUNDOS2
+.L19:
+    movr $0, %h2
+    movr $7, %h1
+    jmp .SEGUNDOS2
+.L20:
+    movr $0, %h2
+    movr $8, %h1
+    jmp .SEGUNDOS2
+.L21:
+    movr $0, %h2
+    movr $9, %h1
+    jmp .SEGUNDOS2
+.L22:
+    movr $1, %h2
+    movr $0, %h1
+    jmp .SEGUNDOS2
+.L23:
+    movr $1, %h2
+    movr $1, %h1
+    jmp .SEGUNDOS2
+.L24:
+    movr $1, %h2
+    movr $2, %h1
+    jmp .SEGUNDOS2
+
  ```
  #
 
@@ -183,8 +332,13 @@ O processo de decisão da arquitetura do relógio foi baseado no assembly feito.
 ``` 4) Diagrama de conexão do processador com os periféricos;```
 
 ![](diagramaBasico.jpg)
+
+O diagrama de cima é o mais simplificado deixando a parte do program counter de lado, mas o diagrama abaixo retoma isso porém sem o tamanho de cada entrada nos blocos, mas com a Unidade de controle indicando corretamente todos os pontos de controle.
 ![](relogio.png)
 
+
+Já o último diagrama foi o RTL montado a partir do quartus que, por mais que o zoom não esteja perfeito, é possível ver o tamanho de cada entrada e saída dos blocos para que o relógio funcione corretamente
+![](RTL.png)
 
 
 ``` 5)Fluxo de dados para o processador, com uma explicação resumida do seu funcionamento;```
