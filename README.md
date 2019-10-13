@@ -22,7 +22,7 @@ Relatório Intermediário
     Mapa de memória. (Nossa arquitetura não possui RAM); 
 
 
-`` 1)Código em assembly está nos arquivos relogio2.c  ``
+`` 1)Código em assembly está nos arquivos relogio2.s  ``
 
 
 #
@@ -136,7 +136,7 @@ Portanto nossa arquitetura possui 16 registradores, mas vamos utilizar apenas 10
 
 | OPCODE        | REGISTRADOR   | RESERVADO | 
 | ------------- | ------------- | --------- |
-| 4bits  | 4bits  | 5bits|
+| 4bits  | 4bits  | 4bits|
 
 
 ``     Modos de endereçamento e mapeamento do I/O ``
@@ -183,6 +183,8 @@ O processo de decisão da arquitetura do relógio foi baseado no assembly feito.
 ``` 4) Diagrama de conexão do processador com os periféricos;```
 
 ![](diagramaBasico.jpg)
+![](relogio.png)
+
 
 
 ``` 5)Fluxo de dados para o processador, com uma explicação resumida do seu funcionamento;```
