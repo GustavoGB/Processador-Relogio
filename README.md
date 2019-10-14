@@ -301,25 +301,17 @@ Portanto nossa arquitetura possui 16 registradores, mas vamos utilizar apenas 10
 
       LCD:
 
-      movd $1 , %s2   (18 é o endereço do primeiro algarismo dos segundos)    
+      movd $1 , %s2   (0001 é o endereço do primeiro algarismo dos segundos no display)    
 
-      movd carrega um registrador e manda pra entrada da ULA, seleciona a função para transferir essa entrada direto para a saída, esse dado vai para o I/O e a escrita no mesmo vai estar habilitada porque a unidade de controle irá habilitá-la ao ver que a instrução é do tipo movd)
-
-      CARREGA I/O valor do periféricos:
-
-      loadio $8, %chave1 (27 endereço da chave 1)
+      movd carrega um registrador e manda pra entrada da ULA, seleciona a função para transferir essa entrada direto para a saída, esse dado vai para o I/O e a escrita no mesmo vai estar habilitada porque a unidade de controle irá habilitá-la ao ver que a instrução é do tipo movd.
 
       BASE DE TEMPO:
 
-      loadio %6, %btempo  (6 é o endereço da base de tempo)
+      loadio %6, %btempo  (6 é o endereço da base de tempo, habilitamos a leitura do registrador que é responsável por guardar se passou um segundo na base de tempo determinada pelas chaves ou não)
 
       CLEAR:
-      movd %btempo, %7  (7 é endereço da btempo sabendo que ele tem 1)
-      
-
-      
-    (Coloca o conteúdo do edi na primeiro segmento do display)
-     ```
+      movd $7, %btempo  (7 é endereço que habilita o clear no decoder. Quando o clear está habilitado e o movd é o opcode, o write enable do display é ativado e é possível mandar o valor 1 - que no momento em que usamos o registrador btempo no código corresponde a 0 ou 1 dependendo do momento - para o RESET da base de tempo)
+     
 
 ```   3) Arquitetura do processador; ```
 
@@ -345,28 +337,27 @@ Já o último diagrama foi o RTL montado a partir do quartus que, por mais que o
 
 Explicação do fluxo de dados:
 
-    A partir de uma determinada instrução, esperamos a leitura do registrador da base de tempo indicar que um segundo já passou para executar o loop de instruções desencadeado pelo add de um no registrador do primeiro dígito dos segundos. 
+    A partir de uma determinada instrução, esperamos a leitura do registrador da base de tempo indicar que um segundo já passou para executar o loop de instruções. O loop de instruções começa pelo add de $1 no registrador dos segundos (%s1) e em seguida ocorrem uma série de verificações para ajustar o restante dos dígitos do display. 
 
-    Considerando essa mesma instrução add, por exemplo, o assembler transforma o conteúdo do program counter em uma instrução (Opcode + End[reg] + Imediato). Em seguida, envia-se essa instrução para a unidade de controle e a mesma gera os pontos de controle específicos para a execução deste comando. 
+    Considerando essa mesma instrução add, por exemplo, o assembler transforma o conteúdo do program counter em uma instrução (Opcode + End[reg] + Imediato). E, em seguida, essa instrução é enviada para a unidade de controle e a mesma gera os pontos de controle específicos para a execução deste comando. Neste caso, a escrita no banco de registradores deve ser habilitada, pois é do nosso interesse guardar o resultado dessa operação no mesmo registrador em questão. Além disso, o mux da entrada da ULA deve selecionar - dentre o valor do imediato da instrução e a leitura de dados do I/O - o valor do imediato, que no caso corresponde a 1.
 
-    Enquanto o imediato vai para a ULA, a instrução também vai para o banco de registradores, onde o conteúdo do endereço do registrador em questão é procurado e enviado para a entrada inferior da ULA. No caso dos registradores do display, os mesmos não estarão habilitados a menos que a instrução seja movd, o que impede escritas involuntárias.
+    Enquanto o imediato vai para a ULA, a parte da instrução que corresponde ao endereço do registrador também vai para o banco de registradores, onde o **conteúdo** do endereço do registrador em questão é procurado e enviado para a entrada inferior da ULA. No caso dos registradores do display, os mesmos não estarão habilitados a menos que a instrução seja movd, o que impede escritas involuntárias.
 
-    Na ULA, a operação add é executada entre o imediato e o conteúdo que foi devolvido pelo banco de registradores. O resultado é armazenado no mesmo registrador envolvido na operação.
-
+    Na ULA, a operação add é executada entre o imediato e o conteúdo que foi devolvido pelo banco de registradores. O resultado é armazenado no mesmo registrador envolvido na operação. Conseguimos executar tanto a busca e envio do conteúdo do registrador quanto o envio do imediato, a operação de adição e também o armazenamento do resultado num mesmo clock.
+    
    ``` 6) Listagem dos pontos de controle e sua utilização```
     
    * ULA_func:
-
      1)   add : 000
      2)   sub : 001
-     3)   and (cmp) : 100
-     4)   movr : É o RetA
-     5)   movd : É o RetB
-     6)   loadio : É o RetA   
+     3)   cmp : 100
+     4)   RetA : 010
+     5)   RetB : 011
    * Habilita_BancoRegistradores: 1 escrita.
    * Mux_entrada_ULA: 1 para imediato, 0 para I/O
    * Habilita_I/O : 1 escrita.
-   * Mux_Jump : 1 para jump 0 normal.   
+   * Mux_Jump : 0 para jump 1 normal.
+   * equal : é um sinal que a ULA manda para a UC quando a instrução é um compare. O resultado do compare pode ser lido posteriormente a partir de um registrador que guarda este valor. Isso é importante quando temos instruções de jmp/je/jne, pois precisamos saber o resultado de um cmp da instrução passada.
 
    
    
