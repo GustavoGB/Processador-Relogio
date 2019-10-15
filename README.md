@@ -1,6 +1,8 @@
 # Processador-Relogio
 Design de Computadores sexto semestre. 
 
+Gustavo e Victor
+
 Relatório Final
 
     Assembly do relógio;
@@ -325,13 +327,8 @@ O processo de decisão da arquitetura do relógio foi baseado no assembly feito.
 
 ![](diagramaBasico.jpg)
 
-O diagrama de cima é o mais simplificado deixando a parte do program counter de lado, mas o diagrama abaixo retoma isso porém sem o tamanho de cada entrada nos blocos, mas com a Unidade de controle indicando corretamente todos os pontos de controle.
-![](relogio.png)
-
-
 Ao realizar o código no VHDL foi possível descrever cada elemento do projeto com ênfase no processador que está demonstrado pelo RTL abaixo.
 ![](RTL_processador.png) 
-
 
 
 Já o último diagrama foi o RTL montado a partir do quartus que, por mais que o zoom não esteja perfeito, é possível ver o tamanho de cada entrada e saída dos blocos para que o relógio funcione corretamente
