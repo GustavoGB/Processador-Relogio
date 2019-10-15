@@ -329,6 +329,11 @@ O diagrama de cima é o mais simplificado deixando a parte do program counter de
 ![](relogio.png)
 
 
+Ao realizar o código no VHDL foi possível descrever cada elemento do projeto com ênfase no processador que está demonstrado pelo RTL abaixo.
+![](RTL_processador.png) 
+
+
+
 Já o último diagrama foi o RTL montado a partir do quartus que, por mais que o zoom não esteja perfeito, é possível ver o tamanho de cada entrada e saída dos blocos para que o relógio funcione corretamente
 ![](RTL.png)
 
