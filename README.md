@@ -364,6 +364,11 @@ Explicação do fluxo de dados:
    * Mux_Jump : 0 para jump 1 normal.
    * equal : é um sinal que a ULA manda para a UC quando a instrução é um compare. O resultado do compare pode ser lido posteriormente a partir de um registrador que guarda este valor. Isso é importante quando temos instruções de jmp/je/jne, pois precisamos saber o resultado de um cmp da instrução passada.
 
+``` 7) Considerações Finais```
+
+* Na FPGA o projeto funcionou corretamente sendo possível alterar a base de tempo em cada caso para o ajuste do relógio. Dessa forma utilizamos as chaves SW(17) e SW(16) para acelerar a base tempo. Além disso, utilizou-se a SW(15) para criar um relógio que possuí AM e PM como sinalização de dia e noite. 
+ 
+
    
    
 
